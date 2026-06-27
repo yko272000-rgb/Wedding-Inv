@@ -173,20 +173,15 @@ body{
 <div id="bg-ambient"></div>
 <div id="petals"></div>
 
-<!-- 🎼 AUDIO ELEMENT (موسيقى زفاف خافتة رومانسية بدون حقوق) -->
 <audio id="inviteMusic" loop preload="auto">
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 🎛️ MUSIC FLOATING BUTTON -->
 <button id="audioControl" onclick="toggleAudio()">
   <svg id="musicOnIcon" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
   <svg id="musicOffIcon" viewBox="0 0 24 24" style="display:none;"><path d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73l6 6L21 20.73 4.27 3zM14 7h4V3h-6v5.18l2 2z"/></svg>
 </button>
 
-<!-- ═══════════════════════════
-     STAGE 1: LUXURY ENVELOPE
-═══════════════════════════ -->
 <div id="envelopeStage">
   <div class="env-container" onclick="openEnvelope()">
     <svg viewBox="0 0 390 780" xmlns="http://www.w3.org/2000/svg">
@@ -203,30 +198,23 @@ body{
         <filter id="sealShadow"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#4A2E1B" flood-opacity="0.3"/></filter>
       </defs>
       
-      <!-- Envelope Base -->
       <rect width="390" height="730" rx="8" fill="url(#envBg)" filter="url(#shadow)"/>
       
-      <!-- Delicate Floral Lace Embossing Border -->
       <rect x="14" y="14" width="362" height="702" rx="6" fill="none" stroke="rgba(168,130,101,0.25)" stroke-width="1" stroke-dasharray="4 2"/>
       <rect x="20" y="20" width="350" height="690" rx="4" fill="none" stroke="rgba(168,130,101,0.15)" stroke-width="0.7"/>
 
-      <!-- Inner Paper Creases -->
       <polygon points="0,730 0,260 195,480" fill="rgba(255,255,255,0.15)"/>
       <polygon points="390,730 390,260 195,480" fill="rgba(240,220,205,0.15)"/>
       <polygon points="0,730 390,730 195,480" fill="rgba(230,210,195,0.2)"/>
 
-      <!-- Monogram in background -->
       <text x="195" y="360" font-family="'Cinzel Decorative',serif" font-size="14" fill="rgba(140,110,90,0.2)" text-anchor="middle" letter-spacing="4">ZOHAN &amp; ROSE</text>
 
-      <!-- Flap Group -->
       <g id="flapGroup" style="transform-origin: 195px 0px; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);">
         <polygon points="0,0 390,0 195,290" fill="url(#flapBgGrad)" stroke="rgba(168,130,101,0.15)" stroke-width="0.5"/>
         <polygon points="12,12 378,12 195,275" fill="none" stroke="rgba(168,130,101,0.2)" stroke-width="0.8"/>
       </g>
 
-      <!-- Wax Seal -->
       <g id="waxSeal" filter="url(#sealShadow)" style="transition: opacity 0.4s, transform 0.4s;">
-        <!-- Glowing ring around seal -->
         <circle cx="195" cy="285" r="38" fill="#845D42" opacity="0.9"/>
         <circle cx="195" cy="285" r="34" fill="#69452E"/>
         <circle cx="195" cy="285" r="32" fill="none" stroke="rgba(255,230,210,0.2)" stroke-width="1"/>
@@ -237,13 +225,9 @@ body{
   </div>
 </div>
 
-<!-- ═══════════════════════════
-     STAGE 2: THE CELEBRATION PAGE
-═══════════════════════════ -->
 <div id="invitationPage">
   <div class="hero">
     
-    <!-- Royal Archway Silhouette -->
     <svg class="arch-svg" viewBox="0 0 390 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin meet">
       <path d="M45,900 L45,240 Q45,70 195,70 Q345,70 345,240 L345,900" fill="none" stroke="rgba(168,130,101,0.2)" stroke-width="1.5"/>
       <path d="M55,900 L55,245 Q55,83 195,83 Q335,83 335,245 L335,900" fill="none" stroke="rgba(168,130,101,0.1)" stroke-width="0.8"/>
@@ -264,42 +248,35 @@ body{
       <div class="scroll-hint">إلى الأسفل للتفاصيل<br>∨</div>
     </div>
 
-    <!-- Swans & Floral Illustration Bottom Base -->
     <div class="swans-wrap">
       <svg viewBox="0 0 340 120" xmlns="http://www.w3.org/2000/svg">
         <ellipse cx="170" cy="105" rx="130" ry="8" fill="rgba(168,130,101,0.08)"/>
-        <!-- Left Swan -->
         <path d="M120,100 Q105,85 115,65 Q125,45 138,55 Q130,65 125,80" fill="none" stroke="#A88265" stroke-width="1.5" stroke-linecap="round"/>
-        <!-- Right Swan (Mirrored) -->
         <path d="M220,100 Q235,85 225,65 Q215,45 202,55 Q210,65 215,80" fill="none" stroke="#A88265" stroke-width="1.5" stroke-linecap="round"/>
-        <!-- Subtly merging into a heart shape -->
         <path d="M142,65 Q170,40 198,65" fill="none" stroke="rgba(168,130,101,0.25)" stroke-width="1" stroke-dasharray="3 3"/>
       </svg>
     </div>
   </div>
 
   <div class="inv-body">
-    <!-- Quote Section -->
     <div class="inv-section">
       <div class="gold-div"><span></span><i>✦</i><span></span></div>
       <p class="quote-text">Two Souls, One Destiny</p>
       <p class="quote-sub">A Lifetime written by Allah.<br>يسعدنا ويشرفنا دعوتكم لمشاركتنا فرحة العمر وبداية رحلتنا الأبدية معاً.</p>
     </div>
 
-    <!-- Date & Time -->
     <div class="inv-section" style="background: rgba(168,130,101,0.03);">
-      <div class="d-row">
+      <div class="detail-row">
         <p class="d-label">التاريخ</p>
         <p class="d-value">الأحد، 27 سبتمبر 2026</p>
       </div>
       <div style="height: 20px;"></div>
-      <div class="d-row">
+      <div class="detail-row">
         <p class="d-label">الوقت</p>
         <p class="d-value">السابعة مساءً</p>
       </div>
     </div>
 
-    <!-- Countdown -->
     <div class="countdown-outer inv-section">
       <p class="d-label" style="margin-bottom:10px">العد التنازلي للحفل</p>
       <div class="cd-boxes">
@@ -309,7 +286,6 @@ body{
       </div>
     </div>
 
-    <!-- RSVP Form -->
     <div class="rsvp-section inv-section">
       <div class="gold-div"><span></span><i>✦</i><span></span></div>
       <p class="quote-text" style="font-size:26px">تأكيد الحضور</p>
@@ -333,7 +309,6 @@ body{
 </div>
 
 <script>
-/* ── تساقط بتلات الورد الوردي الناعم ── */
 function createPetal(){
   const container=document.getElementById('petals');
   if(!container) return;
@@ -353,22 +328,21 @@ function createPetal(){
   setTimeout(()=>p.remove(), 10000);
 }
 
-/* ── التحكم في فتح الظرف والموسيقى ── */
 const music = document.getElementById('inviteMusic');
+// ضبط الصوت ليكون خافتاً وراقياً بنسبة 30% من قوته الأصلية
+music.volume = 0.3;
+
 function openEnvelope(){
   document.getElementById('tapLabel').style.opacity='0';
   document.getElementById('waxSeal').style.transform='scale(0.8)';
   document.getElementById('waxSeal').style.opacity='0';
   
-  // فتح الغطاء العلوي للظرف
   setTimeout(()=>{
     document.getElementById('flapGroup').style.transform='rotateX(-170deg)';
   }, 300);
 
-  // تشغيل الموسيقى فوراً مع الفتح
   playMusic();
 
-  // انتقال واختفاء الظرف لظهور الدعوة
   setTimeout(()=>{
     const stage = document.getElementById('envelopeStage');
     stage.style.transition = 'opacity 0.8s, transform 0.8s';
@@ -390,7 +364,7 @@ function playMusic() {
   music.play().then(() => {
     document.getElementById('musicOnIcon').style.display = 'block';
     document.getElementById('musicOffIcon').style.display = 'none';
-  }).catch(err => console.log("Audio waiting for explicit interaction."));
+  }).catch(err => console.log("Audio awaiting user interaction."));
 }
 
 function toggleAudio(){
@@ -405,7 +379,6 @@ function toggleAudio(){
   }
 }
 
-/* ── العداد التنازلي ── */
 function updateCountdown(){
   const diff = new Date('2026-09-27T19:00:00') - new Date();
   if(diff <= 0) return;
@@ -414,13 +387,11 @@ function updateCountdown(){
   document.getElementById('mins').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
 }
 
-/* ── حركة ظهور النصوص عند التمرير ── */
 function initScrollReveal(){
   const obs = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible') });
   },{threshold: 0.1});
   document.querySelectorAll('.inv-section').forEach(el=>obs.observe(el));
-  // إظهار القسم الأول تلقائياً
   setTimeout(()=>document.querySelectorAll('.inv-section')[0].classList.add('visible'), 200);
 }
 </script>
