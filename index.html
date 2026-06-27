@@ -1,3 +1,4 @@
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -204,7 +205,7 @@ body{
   width:100%;padding:11px;border:1px solid rgba(201,168,76,0.3);background:rgba(255,255,255,0.5);
   font-size:16px;color:#3D2A06;border-radius:4px;outline:none;
 }
-.rsvp-field input:focus, .rsvp-field select:focus{ background:rgba(255,255,255,0.855); border-color:#C9A84C; }
+.rsvp-field input:focus, .rsvp-field select:focus{ background:rgba(255,255,255,0.85); border-color:#C9A84C; }
 .rsvp-btn{
   background:linear-gradient(135deg,#6B4E0A,#C9A84C,#6B4E0A);color:#FFF8E7;border:none;padding:13px;width:100%;max-width:320px;
   font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;
@@ -230,7 +231,7 @@ body{
 <div id="stars"></div>
 <div id="petals"></div>
 
-<!-- 🎼 AUDIO STREAM -->
+<!-- 🎼 AUDIO STREAM (Violin Cover) -->
 <audio id="inviteMusic" loop preload="auto">
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
 </audio>
@@ -250,7 +251,6 @@ body{
         <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EDE0C4"/><stop offset="50%" stop-color="#F5EDD6"/><stop offset="100%" stop-color="#E0CFA8"/></linearGradient>
         <linearGradient id="flapG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F2E6CA"/><stop offset="100%" stop-color="#DDD0A8"/></linearGradient>
         <radialGradient id="waxG" cx="38%" cy="32%" r="65%"><stop offset="0%" stop-color="#C85050"/><stop offset="100%" stop-color="#3A1010"/></radialGradient>
-        <radialGradient id="glowG" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(255,150,60,0.4)"/><stop offset="100%" stop-color="rgba(0,0,0,0)"/></radialGradient>
         <filter id="envShadow"><feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="rgba(0,0,0,0.5)"/></filter>
         <filter id="waxShadow"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="rgba(0,0,0,0.4)"/></filter>
       </defs>
@@ -318,14 +318,14 @@ body{
 
   <div class="inv-body">
     <!-- Welcome Note -->
-    <div class="inv-section">
+    <div class="inv-section" id="sec-welcome">
       <div class="gold-div"><span></span><i>✦</i><span></span></div>
       <p class="quote-text">"Two Souls, One Destiny"</p>
       <p class="quote-sub">Dear friends and family, please join us for an evening of love, laughter, heartfelt duas, and unforgettable memories as we begin our forever.</p>
     </div>
 
     <!-- Schedule -->
-    <div class="inv-section floral-section">
+    <div class="inv-section floral-section" id="sec-schedule">
       <div class="sec-title">The Celebration</div>
       <div class="detail-row">
         <p class="d-label">Date</p>
@@ -338,7 +338,7 @@ body{
     </div>
 
     <!-- Countdown -->
-    <div class="countdown-outer inv-section">
+    <div class="countdown-outer inv-section" id="sec-countdown">
       <p class="cd-heading">The Celebration Begins In</p>
       <div class="cd-boxes">
         <div class="cd-box"><div class="cd-num" id="days">00</div><div class="cd-unit">Days</div></div>
@@ -352,7 +352,7 @@ body{
     </div>
 
     <!-- Venue & Map -->
-    <div class="inv-section">
+    <div class="inv-section" id="sec-venue">
       <div class="gold-div"><span></span><i>✦</i><span></span></div>
       <div class="sec-title">Venue</div>
       <p class="venue-name">On the Nile, Zamalek</p>
@@ -369,14 +369,14 @@ body{
     </div>
 
     <!-- Dress Code -->
-    <div class="dresscode-section inv-section">
+    <div class="dresscode-section inv-section" id="sec-dress">
       <div class="dc-title">Dress Code</div>
       <div class="dc-badge">Black Tie Formal</div>
       <p class="dc-sub">Gentlemen: Black Tuxedo &nbsp;·&nbsp; Ladies: Floor-Length Gown</p>
     </div>
 
     <!-- RSVP -->
-    <div class="rsvp-section inv-section">
+    <div class="rsvp-section inv-section" id="sec-rsvp">
       <div class="gold-div"><span></span><i>✦</i><span></span></div>
       <p class="rsvp-heading">Kindly Respond</p>
       <p class="rsvp-sub">Please reply before December 1st, 2027</p>
@@ -413,6 +413,10 @@ body{
 </div>
 
 <script>
+window.addEventListener('DOMContentLoaded', () => {
+  initStars();
+});
+
 function initStars(){
   const container = document.getElementById('stars');
   for(let i=0; i<40; i++){
@@ -426,12 +430,13 @@ function initStars(){
     container.appendChild(s);
   }
 }
+
 function createPetal(){
   const container = document.getElementById('petals');
   if(!container || container.children.length > 25) return;
   const p = document.createElement('div');
   p.className = 'petal';
-  const w = 10+Math.random()*10;
+  const w = 10 + Math.random()*10;
   p.style.cssText = `--pw:${w}px; --ph:${w*1.2}px; --pd:${6+Math.random()*4}s; --pdelay:${Math.random()}s; --drift:${(Math.random()-.5)*80}px; --r0:${Math.random()*360}deg; --r1:${Math.random()*360}deg; left:${Math.random()*100}%; background:rgba(201,168,76,0.18); border-radius:50% 0 50% 50%;`;
   container.appendChild(p);
   setTimeout(()=>p.remove(), 9000);
@@ -447,12 +452,13 @@ function openEnvelope(){
   
   setTimeout(()=>{ document.getElementById('flapGroup').style.transform='rotateX(-170deg)'; }, 300);
   
-  music.play().catch(e=>console.log("Audio waiting integration."));
+  music.play().catch(e => console.log("Audio waiting interaction context."));
 
   setTimeout(()=>{
     const stage = document.getElementById('envelopeStage');
     stage.style.transition = 'opacity 0.8s, transform 0.8s';
-    stage.style.opacity = '0'; stage.style.transform = 'scale(0.95)';
+    stage.style.opacity = '0'; 
+    stage.style.transform = 'scale(0.95)';
   }, 1200);
 
   setTimeout(()=>{
@@ -466,8 +472,15 @@ function openEnvelope(){
 }
 
 function toggleAudio(){
-  if(music.paused){ music.play(); document.getElementById('musicOnIcon').style.display='block'; document.getElementById('musicOffIcon').style.display='none'; }
-  else { music.pause(); document.getElementById('musicOnIcon').style.display='none'; document.getElementById('musicOffIcon').style.display='block'; }
+  if(music.paused){ 
+    music.play(); 
+    document.getElementById('musicOnIcon').style.display='block'; 
+    document.getElementById('musicOffIcon').style.display='none'; 
+  } else { 
+    music.pause(); 
+    document.getElementById('musicOnIcon').style.display='none'; 
+    document.getElementById('musicOffIcon').style.display='block'; 
+  }
 }
 
 function updateCountdown(){
@@ -476,4 +489,4 @@ function updateCountdown(){
   document.getElementById('days').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
   document.getElementById('hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
   document.getElementById('mins').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-  document.getElementById('secs').textContent = String(Math.floor((diff%600Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+  document.getElementById('secs').textContent = String(MathNormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
