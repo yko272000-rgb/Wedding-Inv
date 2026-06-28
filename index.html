@@ -43,6 +43,7 @@
         display: flex;
         justify-content: center;
         margin-top: -20px;
+        background: transparent;
     }
     .disney-swans {
         width: 160px;
@@ -66,6 +67,7 @@
         justify-content: center;
         background: #0D1520;
         padding-top: 40px;
+        height: 900px;
     }
     .arch-svg {
         width: 100%; max-width: 390px; height: auto; display: block;
@@ -157,7 +159,7 @@
     .detail-row{margin-bottom:20px}
     .d-label{font-family:'Cinzel',serif;font-size:12px;letter-spacing:1px;color:#8B6914;margin-bottom:4px}
     .d-value{font-size:18px;color:#5C3D0E;font-weight:600}
-    .d-value.mid">Ceremony begins at 6:00 PM</p>
+    .d-value.mid{display:block;font-size:15px;color:#8B6914;font-style:italic}
     .countdown-outer{background:linear-gradient(135deg,#0D1520,#162235);border-top:1px solid rgba(200,160,70,0.3);border-bottom:1px solid rgba(200,160,70,0.3)}
     .cd-heading{font-family:'Great Vibes',cursive;font-size:32px;color:#C9A84C;margin-bottom:20px}
     .cd-lines{display:flex;justify-content:center;gap:15px;align-items:center}
@@ -191,6 +193,7 @@
 <div id="bg-ambient"></div>
 <div id="stars"></div>
 
+<!-- STAGE 1: THE ENVELOPE -->
 <div id="envelopeStage">
     <div class="env-container">
         <svg viewBox="0 0 390 820" xmlns="http://www.w3.org/2000/svg">
@@ -224,6 +227,7 @@
     </div>
 </div>
 
+<!-- STAGE 2: THE CELEBRATION -->
 <div id="invitationPage">
     <div class="hero">
         <svg class="arch-svg" viewBox="0 0 390 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin meet">
@@ -237,7 +241,7 @@
             
             <div class="hero-names">
                 <span class="hero-name">Youssef</span>
-                <span class="hero-amp">&</span>
+                <span class="hero-amp">&amp;</span>
                 <span class="hero-name">Maram</span>
             </div>
             
@@ -278,7 +282,7 @@
             <div class="floral-section">
                 <div class="detail-row">
                     <p class="d-label">The Cordial Invitation</p>
-                    <p class="d-value">Together with their families, Youssef & Maram joyfully invite you to share in the celebration of their love as they exchange vows and begin their beautiful journey together.</p>
+                    <p class="d-value">Together with their families, Youssef &amp; Maram joyfully invite you to share in the celebration of their love as they exchange vows and begin their beautiful journey together.</p>
                 </div>
             </div>
         </div>
@@ -296,9 +300,9 @@
 
         <div class="inv-section" id="sec-details">
             <div class="gold-div"><span></span><i class="fas fa-calendar-alt"></i><span></span></div>
-            <h2 class="sec-title">When & Where</h2>
+            <h2 class="sec-title">When &amp; Where</h2>
             <div class="detail-row">
-                <p class="d-label">Date & Time</p>
+                <p class="d-label">Date &amp; Time</p>
                 <p class="d-value">Thursday, December 30, 2027</p>
                 <p class="d-value mid">Ceremony begins at 6:00 PM</p>
             </div>
@@ -358,7 +362,7 @@
     </div>
 
     <div class="inv-footer">
-        YOUSSEF & MARAM — 30.12.2027 — #YOUSSEFANDMARAM
+        YOUSSEF &amp; MARAM — 30.12.2027 — #YOUSSEFANDMARAM
     </div>
 </div>
 
