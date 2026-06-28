@@ -32,19 +32,27 @@ body{
 }
 @keyframes twinkle{0%,100%{opacity:.05}50%{opacity:.6}}
 
-/* ── REALISTIC WHITE WEDDING PETALS ── */
+/* ── HIGHLY REALISTIC WHITE ROSE PETALS ── */
 #petals{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
-.petal{
-  position:absolute;top:-80px;left:var(--pl,50%);
-  width:var(--pw,16px);height:var(--ph,20px);opacity:0;
-  box-shadow: inset -2px -2px 4px rgba(0,0,0,0.05);
-  animation:petalFall var(--pd,7s) ease-in var(--pdelay,0s) forwards;
+.petal {
+  position: absolute;
+  top: -80px;
+  left: var(--pl, 50%);
+  width: var(--pw, 18px);
+  height: var(--ph, 22px);
+  opacity: 0;
+  /* Multi-layered gradient mirroring image_41ffbd.png: rich green stem sepals base transitioning into fresh wedding white */
+  background: radial-gradient(circle at 50% 90%, #4D6A1D 0%, #769C37 12%, #EAEFE2 30%, #FFFFFF 75%, #FDFDFD 100%);
+  filter: drop-shadow(1px 3px 4px rgba(0,0,0,0.15));
+  border-radius: 40% 40% 55% 55% / 50% 50% 50% 50%;
+  transform-origin: center;
+  animation: petalFall var(--pd,7s) ease-in var(--pdelay,0s) forwards;
 }
 @keyframes petalFall{
-  0%  {transform:translateX(0) rotate(var(--r0,0deg)) scale(1);opacity:0;top:-80px}
-  10% {opacity:.9}
-  90% {opacity:.5}
-  100%{transform:translateX(var(--drift,40px)) rotate(var(--r1,360deg)) scale(0.7);opacity:0;top:110vh}
+  0%  {transform:translateX(0) rotateX(0deg) rotateY(0deg) rotateZ(var(--r0,0deg)) scale(1.1);opacity:0;top:-80px}
+  12% {opacity:.95}
+  85% {opacity:.6}
+  100%{transform:translateX(var(--drift,50px)) rotateX(180deg) rotateY(360deg) rotateZ(var(--r1,360deg)) scale(0.7);opacity:0;top:110vh}
 }
 
 /* ── ROYAL ENVELOPE STAGE ── */
@@ -57,7 +65,7 @@ body{
 .env-container{width:100%;max-width:390px;position:relative;cursor:pointer}
 .env-container svg{
   width:100%;height:auto;
-  filter:drop-shadow(0 25px 55px rgba(0,0,0,0.8)) drop-shadow(0 0 30px rgba(180,140,60,0.15));
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,0.85)) drop-shadow(0 0 35px rgba(180,140,60,0.18));
 }
 .tap-label{
   position:absolute;bottom:8%;left:50%;transform:translateX(-50%);
@@ -75,13 +83,14 @@ body{
   background:linear-gradient(180deg,#fdf6ec 0%,#f7ecd8 50%,#f0e2c8 100%);
   position:relative;display:flex;flex-direction:column;align-items:center;
   overflow:hidden;
+  padding-bottom: 80px;
 }
 .arch-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 
 .arch-frame{
   position:relative;
   width:100%;max-width:390px;
-  padding:140px 45px 40px;
+  padding:140px 45px 20px;
   display:flex;flex-direction:column;align-items:center;
   text-align:center;
 }
@@ -101,21 +110,11 @@ body{
 .one-liner em{display:block;font-size:14px;color:#8B6914;margin-top:5px;font-weight:600;font-style:normal}
 
 .scroll-hint{
-  margin-top:30px;font-family:'Cinzel',serif;font-size:11px;
+  margin-top:40px;font-family:'Cinzel',serif;font-size:11px;
   letter-spacing:3px;text-transform:uppercase;color:#8B6914;opacity:.7;
   animation:bob 2s infinite;
 }
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
-
-/* ── ROMANTIC ANIMATED SWANS ── */
-.swans-wrap{
-  width:100%;display:flex;justify-content:center;margin-top:10px;padding-bottom:30px;
-  animation:swanFloating 4s ease-in-out infinite;
-}
-@keyframes swanFloating {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
 
 /* ── BODY SECTIONS ── */
 .inv-body{background:linear-gradient(180deg,#fdf8f0 0%,#f5edd6 100%);padding-bottom:60px}
@@ -131,7 +130,7 @@ body{
 .gold-div i{font-style:normal;color:#C9A84C;font-size:12px}
 
 .sec-title{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#8B6914;margin-bottom:15px}
-.quote-text{font-family:'Great Vibes',cursive;font-size:30px;color:#5C3D0E;margin-bottom:10px}
+.quote-text{font-family:'Great Vibes',cursive;font-size:30px;color:#5C3E0E;margin-bottom:10px}
 .quote-sub{font-size:16px;color:#7A5C2A;line-height:1.7}
 
 .floral-section{
@@ -253,17 +252,29 @@ body{
           <stop offset="0%" stop-color="#ECDDC3"/>
           <stop offset="100%" stop-color="#C8B89E"/>
         </linearGradient>
-        <!-- Realistic Wax Seal Bevel Shading Filters -->
-        <filter id="waxBevel" x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur in="SourceAlpha" stdDeviation="2.5" result="blur"/>
-          <feSpecularLighting in="blur" surfaceScale="6" specularConstant="1.2" specularExponent="12" lighting-color="#ffffff" result="light">
-            <fePointLight x="130" y="240" z="50"/>
+        
+        <!-- High-End 3D Specular Shading Filters precisely matching image_41ff23.png -->
+        <filter id="ultraWaxSpecular" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="1.8" result="blur"/>
+          <feSpecularLighting in="blur" surfaceScale="7" specularConstant="1.8" specularExponent="22" lighting-color="#ffffff" result="specOut">
+            <fePointLight x="120" y="220" z="65"/>
           </feSpecularLighting>
-          <feComposite in="light" in2="SourceAlpha" operator="in" result="lightEffect"/>
-          <feComposite in="SourceGraphic" in2="lightEffect" operator="arithmetic" k1="0" k2="1" k3="0.8" k4="0"/>
+          <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specIn"/>
+          <feComposite in="SourceGraphic" in2="specIn" operator="arithmetic" k1="0" k2="1" k3="0.75" k4="0"/>
         </filter>
-        <filter id="waxShadow">
-          <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.6"/>
+        <filter id="waxInnerShadow">
+          <feComponentTransfer in="SourceAlpha">
+            <feFuncA type="linear" slope="0.7"/>
+          </feComponentTransfer>
+          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feOffset dx="1" dy="2"/>
+          <feComposite operator="out" in2="SourceGraphic" result="inverse"/>
+          <feFlood flood-color="black" result="color"/>
+          <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
+          <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+        </filter>
+        <filter id="waxOuterShadow">
+          <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#000000" flood-opacity="0.65"/>
         </filter>
         <filter id="envShadow"><feDropShadow dx="0" dy="15" stdDeviation="18" flood-color="rgba(0,0,0,0.65)"/></filter>
       </defs>
@@ -284,15 +295,20 @@ body{
         <polygon points="12,12 378,12 195,295" fill="none" stroke="rgba(160,130,70,0.3)" stroke-width="0.8"/>
       </g>
 
-      <!-- Realistic Royal Wax Seal Stamp -->
-      <g id="waxSeal" filter="url(#waxShadow)" style="cursor:pointer; transform-origin:195px 300px; transition:transform 0.4s ease, opacity 0.4s ease">
-        <!-- Outer Organic Fluid Stamp Shape -->
-        <path d="M 195,248 C 218,249 235,254 246,268 C 258,284 256,312 245,328 C 232,346 208,354 191,351 C 170,353 148,342 141,324 C 134,302 140,274 155,261 C 168,250 182,248 195,248 Z" fill="#75071F" filter="url(#waxBevel)"/>
-        <!-- Inner Ring -->
-        <circle cx="195" cy="300" r="39" fill="#630216" opacity="0.9"/>
-        <circle cx="195" cy="300" r="34" fill="none" stroke="#42000B" stroke-width="1.5" opacity="0.6"/>
-        <!-- Initials -->
-        <text x="194" y="309" font-family="'Cinzel Decorative', serif" font-size="24" font-weight="bold" fill="#DFB262" text-anchor="middle" letter-spacing="-1" filter="drop-shadow(0px 1px 1px rgba(0,0,0,0.5))">Y&amp;M</text>
+      <!-- 100% Hyper-Realistic Matte Glossy Wax Seal (image_41ff23.png Inspired) -->
+      <g id="waxSeal" filter="url(#waxOuterShadow)" style="cursor:pointer; transform-origin:195px 300px; transition:transform 0.4s ease, opacity 0.4s ease">
+        <!-- Outer Melted Base Ring -->
+        <path d="M 195,244 C 215,245 228,249 243,260 C 259,273 264,295 258,315 C 252,336 232,352 211,355 C 190,358 168,349 154,335 C 140,320 134,298 141,278 C 147,259 171,243 195,244 Z" fill="#911424" filter="url(#ultraWaxSpecular)"/>
+        <!-- Pressed Central Platform -->
+        <circle cx="195" cy="300" r="42" fill="#800F1E" filter="url(#ultraWaxSpecular)"/>
+        <!-- Deep Pressed Groove Ring -->
+        <circle cx="195" cy="300" r="36" fill="none" stroke="#52040D" stroke-width="2.5" opacity="0.85" filter="url(#waxInnerShadow)"/>
+        <!-- Embellished Royal Wreath Details -->
+        <path d="M 172,315 C 168,300 170,285 178,275 M 218,315 C 222,300 220,285 212,275" fill="none" stroke="#A81D30" stroke-width="1.2" filter="url(#ultraWaxSpecular)"/>
+        <!-- Deeply Embedded Initials -->
+        <text x="195" y="309" font-family="'Cinzel Decorative', serif" font-size="24" font-weight="bold" fill="#50030B" text-anchor="middle" letter-spacing="-1" filter="url(#waxInnerShadow)" opacity="0.95">Y&amp;M</text>
+        <!-- Overlay Specular Blend Highlight for Inner Text -->
+        <text x="195" y="309" font-family="'Cinzel Decorative', serif" font-size="24" font-weight="bold" fill="#B5283B" text-anchor="middle" letter-spacing="-1" opacity="0.4" pointer-events="none">Y&amp;M</text>
       </g>
     </svg>
     <div class="tap-label" id="tapLabel">✦ &nbsp; Tap to Open &nbsp; ✦</div>
@@ -323,25 +339,6 @@ body{
       </div>
 
       <div class="scroll-hint">Scroll Down<br>∨</div>
-    </div>
-
-    <!-- Romantic White Elegant Swans Facing Each Other -->
-    <div class="swans-wrap">
-      <svg viewBox="0 0 340 140" xmlns="http://www.w3.org/2000/svg" width="240">
-        <ellipse cx="170" cy="125" rx="140" ry="10" fill="rgba(180,140,60,0.06)"/>
-        <!-- Left Swan (Male/Youssef Accent) -->
-        <path d="M 125,120 C 105,120 90,105 95,85 C 100,65 118,50 128,25 C 132,15 138,15 137,23 C 135,35 120,55 120,75 C 120,95 135,105 150,110 C 140,116 132,120 125,120 Z" fill="#FFFFFF" stroke="#D4AF37" stroke-width="0.5"/>
-        <path d="M 137,23 L 142,21 L 138,27 Z" fill="#FF8C00"/> <!-- Beak -->
-        <circle cx="134" cy="22" r="1" fill="#000000"/> <!-- Eye -->
-
-        <!-- Right Swan (Female/Maram Accent) -->
-        <path d="M 215,120 C 235,120 250,105 245,85 C 240,65 222,50 212,25 C 208,15 202,15 203,23 C 205,35 220,55 220,75 C 220,95 205,105 190,110 C 200,116 208,120 215,120 Z" fill="#FFFFFF" stroke="#D4AF37" stroke-width="0.5"/>
-        <path d="M 203,23 L 198,21 L 202,27 Z" fill="#FF8C00"/> <!-- Beak -->
-        <circle cx="206" cy="22" r="1" fill="#000000"/> <!-- Eye -->
-        
-        <!-- Connecting Magic Spark Arc -->
-        <path d="M135,35 Q170,15 205,35" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1.2" stroke-dasharray="4 4"/>
-      </svg>
     </div>
   </div>
 
@@ -465,23 +462,23 @@ function setupScrollReveal() {
 
 function createPetal() {
   const container = document.getElementById('petals');
-  if (!container || container.children.length > 30) return;
+  if (!container || container.children.length > 32) return;
   const p = document.createElement('div');
   p.className = 'petal';
-  const w = 12 + Math.random() * 10;
+  const w = 13 + Math.random() * 9;
   
-  // Real Natural Wedding Flowers: White Petals with a delicate light green core dot base
   p.style.cssText = [
     `--pw:${w}px`,
-    `--ph:${w * 1.2}px`,
-    `--pd:${5 + Math.random() * 4}s`,
-    `--pdelay:${Math.random() * 0.3}s`,
-    `--drift:${(Math.random() - 0.5) * 140}px`,
+    `--ph:${w * 1.22}px`,
+    `--pd:${5.5 + Math.random() * 3.5}s`,
+    `--pdelay:${Math.random() * 0.2}s`,
+    `--drift:${(Math.random() - 0.5) * 150}px`,
     `--r0:${Math.random() * 360}deg`,
     `--r1:${Math.random() * 540}deg`,
     `left:${Math.random() * 100}%`,
-    `background: radial-gradient(circle at 50% 85%, #6B8E23 0%, #7FFF00 8%, #FFFFFF 22%, #F9F9F9 100%)`,
-    `border-radius: 55% 45% 52% 48% / 60% 40% 60% 40%`
+    /* Precise gradient replication from image_41ffbd.png showing hyper-realistic botanical details */
+    `background: radial-gradient(circle at 50% 88%, #476618 0%, #688B2A 14%, #E9EEE1 32%, #FFFFFF 80%, #FAFAFA 100%)`,
+    `border-radius: 45% 55% 50% 50% / 55% 55% 45% 45%`
   ].join(';');
   container.appendChild(p);
   setTimeout(() => p.remove(), 9000);
@@ -496,37 +493,37 @@ function openEnvelope() {
   const flapGroup = document.getElementById('flapGroup');
   const stage     = document.getElementById('envelopeStage');
 
-  // Instant execution upon tap for enhanced real physical action feel
+  // Music triggers instantly upon tap to ensure flawless alignment
   if (music) {
-    music.play().catch((err) => { console.log("Audio play deferred or blocked:", err); });
+    music.play().catch((err) => { console.log("Audio contextual trigger:", err); });
   }
 
   if (tapLabel) tapLabel.style.opacity = '0';
   if (waxSeal) { 
-    waxSeal.style.transform = 'scale(0.75) translateY(10px)'; 
+    waxSeal.style.transform = 'scale(0.85) translateY(12px)'; 
     waxSeal.style.opacity = '0'; 
   }
 
   setTimeout(() => {
     if (flapGroup) flapGroup.style.transform = 'rotateX(-170deg)';
-  }, 150);
+  }, 120);
 
   setTimeout(() => {
     if (stage) { 
-      stage.style.transition = 'opacity 0.7s, transform 0.7s'; 
+      stage.style.transition = 'opacity 0.65s, transform 0.65s'; 
       stage.style.opacity = '0'; 
       stage.style.transform = 'scale(0.96)'; 
     }
-  }, 1000);
+  }, 950);
 
   setTimeout(() => {
     if (stage) stage.style.display = 'none';
     document.getElementById('invitationPage').style.display = 'block';
     document.getElementById('audioControl').style.display = 'flex';
     setInterval(updateCountdown, 1000);
-    setInterval(createPetal, 350);
+    setInterval(createPetal, 320);
     setupScrollReveal();
-  }, 1600);
+  }, 1550);
 }
 
 function toggleAudio() {
