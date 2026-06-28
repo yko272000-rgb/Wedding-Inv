@@ -263,15 +263,12 @@ body{
       <!-- تم تعديل الخط هنا ليكون غامق وواضح ومقروء بوضوح تام فوق الظرف -->
       <text x="195" y="380" font-family="'Cinzel', serif" font-size="20" font-weight="900" fill="#4A320F" text-anchor="middle" letter-spacing="5" style="text-shadow: 1px 1px 2px rgba(255,255,255,0.8);">YOUSSEF &amp; MARAM</text>
 
-      <g id="flapGroup" style="transform-origin: 195px 0px; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);">
-<g id="flapGroup" class="envelope-flap" style="transform-origin: 195px 310px; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);">
-  <polygon points="12,12 378,12 195,295" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="0.7"/>
+   <g id="flapGroup" class="envelope-flap" style="transform-origin: 195px 310px; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);">
+        <polygon points="0,0 390,0 195,310" fill="url(#flapG)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+        <polygon points="12,12 378,12 195,295" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="0.7"/>
       </g>
-      <g id="waxSeal" filter="url(#waxShadow)" style="transition: opacity 0.4s, transform 0.4s;">
-        <circle cx="195" cy="300" r="45" fill="url(#waxG)"/>
-        <circle cx="195" cy="300" r="38" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
-        <text x="195" y="306" font-family="'Cinzel Decorative',serif" font-size="16" fill="#F0D98A" text-anchor="middle">Y&amp;M</text>
-      </g>
+      
+      <image href="seal.png" x="150" y="265" width="90" height="90" class="envelope-seal" onclick="openEnvelope()" style="transform-origin: 195px 310px;" />
     </svg>
     <div class="tap-label" id="tapLabel">✦ &nbsp; Tap to Open &nbsp; ✦</div>
   </div>
