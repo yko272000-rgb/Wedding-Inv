@@ -19,6 +19,9 @@ body{
 /* ────────────────────────────
    BACKGROUND AMBIENT & STARS
 ──────────────────────────── */
+  .envelope-flap.open {
+    transform: rotateX(180deg);
+}
 #bg-ambient{
   position:fixed;inset:0;z-index:0;pointer-events:none;
   background:
@@ -247,11 +250,10 @@ body{
       <defs>
         <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EDE0C4"/><stop offset="50%" stop-color="#F5EDD6"/><stop offset="100%" stop-color="#E0CFA8"/></linearGradient>
         <linearGradient id="flapG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F2E6CA"/><stop offset="100%" stop-color="#DDD0A8"/></linearGradient>
-        <radialGradient id="waxG" cx="38%" cy="32%" r="65%"><stop offset="0%" stop-color="#C85050"/><stop offset="100%" stop-color="#3A1010"/></radialGradient>
+<radialGradient id="waxG" cx="38%" cy="32%" r="65%"><stop offset="0%" stop-color="#990026"/><stop offset="60%" stop-color="#6b001a"/><stop offset="100%" stop-color="#400010"/></radialGradient>
         <filter id="envShadow"><feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="rgba(0,0,0,0.5)"/></filter>
         <filter id="waxShadow"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="rgba(0,0,0,0.4)"/></filter>
       </defs>
-      
       <rect width="390" height="820" rx="6" fill="url(#bodyG)" filter="url(#envShadow)"/>
       <polygon points="0,820 0,200 195,510" fill="rgba(160,130,70,0.12)"/>
       <polygon points="390,820 390,200 195,510" fill="rgba(140,110,55,0.1)"/>
@@ -262,10 +264,9 @@ body{
       <text x="195" y="380" font-family="'Cinzel', serif" font-size="20" font-weight="900" fill="#4A320F" text-anchor="middle" letter-spacing="5" style="text-shadow: 1px 1px 2px rgba(255,255,255,0.8);">YOUSSEF &amp; MARAM</text>
 
       <g id="flapGroup" style="transform-origin: 195px 0px; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);">
-        <polygon points="0,0 390,0 195,310" fill="url(#flapG)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
-        <polygon points="12,12 378,12 195,295" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="0.7"/>
+<g id="flapGroup" class="envelope-flap" style="transform-origin: 195px 310px; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);">
+  <polygon points="12,12 378,12 195,295" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="0.7"/>
       </g>
-
       <g id="waxSeal" filter="url(#waxShadow)" style="transition: opacity 0.4s, transform 0.4s;">
         <circle cx="195" cy="300" r="45" fill="url(#waxG)"/>
         <circle cx="195" cy="300" r="38" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
