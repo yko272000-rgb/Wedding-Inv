@@ -1,454 +1,542 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Youssef & Maram - Wedding Invitation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Great+Vibes&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{height:100%;scroll-behavior:smooth}
-    body{
-        background:#0D1520;
-        font-family:'Cormorant Garamond',serif;
-        min-height:100vh;
-        overflow-x:hidden;
-        -webkit-font-smoothing:antialiased;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Youssef & Maram — Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Great+Vibes&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{height:100%;scroll-behavior:smooth}
+body{
+  background:#0D1520;
+  font-family:'Cormorant Garamond',serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
 
-    /* --- تظبيط شكل ومكان الظرف الخارجي --- */
-    #envelopeStage {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100vh;
-        background: #0D1520;
-        display: flex; justify-content: center; align-items: center;
-        z-index: 200;
-        transition: transform 1s ease, opacity 1s ease;
-    }
-    .env-container {
-        width: 100%; max-width: 390px; height: 100%; max-height: 820px;
-        position: relative; display: flex; flex-direction: column; justify-content: center;
-    }
-    .tap-label {
-        position: absolute; bottom: 40px; width: 100%; text-align: center;
-        color: #C9A84C; font-family: 'Cinzel', serif; font-size: 14px;
-        letter-spacing: 2px; animation: pulse 2s infinite; pointer-events: none;
-    }
-    @keyframes pulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
+/* ── BACKGROUND & STARS ── */
+#bg-ambient{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(180,140,60,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 80% 70%, rgba(180,140,60,0.05) 0%, transparent 70%),
+    linear-gradient(180deg, #0D1520 0%, #111825 100%);
+}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+.star{
+  position:absolute;border-radius:50%;
+  background:rgba(240,220,150,0.9);
+  animation:twinkle var(--d,3s) ease-in-out infinite var(--dl,0s);
+}
+@keyframes twinkle{0%,100%{opacity:.05}50%{opacity:.6}}
 
-    /* --- أنيميشن وتنسيق وز ديزني الساحر --- */
-    .swans-wrap {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-top: -20px;
-        background: transparent;
-    }
-    .disney-swans {
-        width: 160px;
-        height: auto;
-        overflow: visible;
-    }
-    .swan-couple {
-        animation: disneyFloat 4s ease-in-out infinite;
-        transform-origin: center;
-    }
-    @keyframes disneyFloat {
-        0%, 100% { transform: translateY(0) scale(1); }
-        50% { transform: translateY(-5px) scale(1.02); }
-    }
+/* ── PETALS ── */
+#petals{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
+.petal{
+  position:absolute;top:-80px;left:var(--pl,50%);
+  width:var(--pw,16px);height:var(--ph,20px);opacity:0;
+  animation:petalFall var(--pd,7s) ease-in var(--pdelay,0s) forwards;
+}
+@keyframes petalFall{
+  0%  {transform:translateX(0) rotate(var(--r0,0deg)) scale(1);opacity:0;top:-80px}
+  10% {opacity:.8}
+  90% {opacity:.4}
+  100%{transform:translateX(var(--drift,40px)) rotate(var(--r1,360deg)) scale(0.75);opacity:0;top:110vh}
+}
 
-    /* --- إجبار حاوية القبة والنصوص على البقاء بالداخل --- */
-    .hero {
-        position: relative;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        background: #0D1520;
-        padding-top: 40px;
-        height: 900px;
-    }
-    .arch-svg {
-        width: 100%; max-width: 390px; height: auto; display: block;
-    }
-    .arch-frame {
-        position: absolute !important;
-        top: 0; left: 50%; transform: translateX(-50%);
-        width: 100% !important;
-        max-width: 390px !important;
-        height: 100%;
-        padding: 140px 45px 40px 45px !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-    }
+/* ── ENVELOPE STAGE ── */
+#envelopeStage{
+  position:relative;z-index:10;
+  width:100%;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;background:#0d1520;
+}
+.env-container{width:100%;max-width:390px;position:relative;cursor:pointer}
+.env-container svg{
+  width:100%;height:auto;
+  filter:drop-shadow(0 20px 50px rgba(0,0,0,0.65)) drop-shadow(0 0 20px rgba(180,140,60,0.1));
+}
+.tap-label{
+  position:absolute;bottom:8%;left:50%;transform:translateX(-50%);
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:5px;color:#C9A84C;
+  text-transform:uppercase;animation:tapPulse 2s ease-in-out infinite;white-space:nowrap;
+  transition:opacity 0.4s;
+}
+@keyframes tapPulse{0%,100%{opacity:.25}50%{opacity:1}}
 
-    /* --- تظبيط البسملة --- */
-    .bismillah {
-        font-family: 'Amiri', serif;
-        color: #C9A84C;
-        font-size: 20px !important;
-        margin-bottom: 20px !important;
-        width: 100% !important;
-    }
+/* ── INVITATION PAGE ── */
+#invitationPage{display:none;position:relative;z-index:1;width:100%}
 
-    /* --- كلمة Wedding Day والتاريخ --- */
-    .wedding-day-label {
-        font-family: 'Great Vibes', cursive;
-        color: #C9A84C;
-        font-size: 32px !important;
-        margin-bottom: 5px !important;
-    }
-    .wedding-date-small {
-        font-family: 'Cinzel', serif;
-        color: #C9A84C;
-        font-size: 14px !important;
-        letter-spacing: 2px;
-        margin-bottom: 40px !important;
-    }
+.hero{
+  width:100%;min-height:100vh;
+  background:linear-gradient(180deg,#fdf6ec 0%,#f7ecd8 50%,#f0e2c8 100%);
+  position:relative;display:flex;flex-direction:column;align-items:center;
+  overflow:hidden;
+}
+.arch-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 
-    /* --- الأسماء وحجمها جوه القبة --- */
-    .hero-names {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 5px !important;
-        width: 100% !important;
-        margin-bottom: 35px !important;
-    }
-    .hero-name {
-        font-family: 'Cinzel Decorative', serif;
-        color: #ffffff;
-        font-size: 42px !important;
-        line-height: 1.1 !important;
-        display: block !important;
-        text-shadow: 0 0 10px rgba(201,168,76,0.3);
-    }
-    .hero-amp {
-        font-family: 'Great Vibes', cursive;
-        color: #C9A84C;
-        font-size: 32px !important;
-        margin: 5px 0 !important;
-    }
+.arch-frame{
+  position:relative;
+  width:100%;max-width:390px;
+  padding:140px 45px 40px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+}
 
-    /* --- الكلام المكتوب تحت الأسماء --- */
-    .one-liner {
-        font-family: 'Cormorant Garamond', serif;
-        color: rgba(255,255,255,0.85);
-        font-size: 15px !important;
-        line-height: 1.6 !important;
-        padding: 0 10px !important;
-        font-style: italic;
-    }
+.bismillah{font-family:'Amiri',serif;font-size:22px;color:#5C3D0E;margin-bottom:15px}
+.wedding-day-label{font-family:'Great Vibes',cursive;font-size:26px;color:#8B6914;margin-bottom:6px}
+.wedding-date-small{font-family:'Cinzel',serif;font-size:11px;letter-spacing:4px;color:#A07828;margin-bottom:25px}
 
-    /* --- باقي تنسيقات أقسام الموقع السفلى والألوان الكريمي --- */
-    #invitationPage { display: none; background: #0D1520; }
-    .inv-body{background:linear-gradient(180deg,#fdf6ce 0%,#f7eed8 100%);padding-bottom:60px}
-    .inv-section{padding:40px 20px;text-align:center;opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease}
-    .inv-section.visible{opacity:1;transform:translateY(0)}
-    .gold-div{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px}
-    .gold-div span{width:40px;height:1px;background:linear-gradient(to right,transparent,rgba(180,140,60,0.6),transparent)}
-    .gold-div i{color:#8B6914;font-size:12px}
-    .sec-title{font-family:'Cinzel',serif;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#8B6914;margin-bottom:15px}
-    .quote-text{font-family:'Great Vibes',cursive;font-size:28px;color:#5C3D0E;margin-bottom:10px}
-    .quote-author{font-size:14px;color:#8B6914;line-height:1.7}
-    .floral-section{max-width:320px;margin:30px auto;border-top:1px solid rgba(200,160,70,0.2);border-bottom:1px solid rgba(200,160,70,0.2);padding:15px 0}
-    .detail-row{margin-bottom:20px}
-    .d-label{font-family:'Cinzel',serif;font-size:12px;letter-spacing:1px;color:#8B6914;margin-bottom:4px}
-    .d-value{font-size:18px;color:#5C3D0E;font-weight:600}
-    .d-value.mid{display:block;font-size:15px;color:#8B6914;font-style:italic}
-    .countdown-outer{background:linear-gradient(135deg,#0D1520,#162235);border-top:1px solid rgba(200,160,70,0.3);border-bottom:1px solid rgba(200,160,70,0.3)}
-    .cd-heading{font-family:'Great Vibes',cursive;font-size:32px;color:#C9A84C;margin-bottom:20px}
-    .cd-lines{display:flex;justify-content:center;gap:15px;align-items:center}
-    .cd-box{display:flex;flex-direction:column;align-items:center}
-    .cd-num{font-family:'Cinzel Decorative',serif;font-size:28px;color:#ffffff;background:rgba(255,255,255,0.03);padding:10px 15px;border-radius:4px;border:1px solid rgba(255,255,255,0.05);min-width:65px;box-shadow:0 4px 15px rgba(0,0,0,0.2)}
-    .cd-word{font-family:'Cinzel',serif;font-size:10px;letter-spacing:1px;color:#C9A84C;margin-top:8px}
-    .venue-name{font-family:'Great Vibes',cursive;font-size:32px;color:#5C3D0E;margin-bottom:5px}
-    .venue-address{font-size:15px;color:#7A5C2A;font-style:italic;margin-bottom:15px}
-    .map-wrapper{border-radius:8px;overflow:hidden;border:1px solid rgba(200,160,70,0.3);box-shadow:0 8px 25px rgba(140,110,50,0.15);max-width:100%;margin:0 auto 15px}
-    .map-card iframe{width:100%;height:250px;border:none;display:block}
-    .map-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,#8B6914,#C9A84C);color:#ffffff;font-family:'Cinzel',serif;font-size:13px;letter-spacing:1px;text-decoration:none;border-radius:4px;box-shadow:0 4px 15px rgba(140,110,50,0.3)}
-    .dresscode-section{background:rgba(200,160,70,0.05);border-top:1px solid rgba(200,160,70,0.15)}
-    .dc-title{font-family:'Great Vibes',cursive;font-size:32px;color:#5C3D0E;margin-bottom:10px}
-    .dc-desc{font-size:15px;color:#7A5C2A;line-height:1.6}
-    .dc-badge{display:inline-block;padding:6px 16px;border:1px solid rgba(140,110,50,0.3);font-family:'Cinzel Decorative',serif;font-size:12px;letter-spacing:2px;color:#8B6914;margin-top:15px}
-    .rsvp-section{background:linear-gradient(180deg,#f7eed8,#fdf6ce);border-top:1px solid rgba(200,160,70,0.15)}
-    .rsvp-subtitle{font-size:14px;color:#7A5C2A;margin-bottom:20px;line-height:1.6}
-    .rsvp-field{margin-bottom:20px;text-align:left;max-width:280px;margin-left:auto;margin-right:auto}
-    .rsvp-field label{display:block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:1px;color:#8B6914;margin-bottom:6px}
-    .rsvp-field input, .rsvp-field select{width:100%;padding:10px;border:1px solid rgba(140,110,50,0.3);background:rgba(255,255,255,0.5);font-size:15px;color:#5C3D0E;border-radius:4px;outline:none}
-    .rsvp-btn{background:linear-gradient(135deg,#8B6914,#C9A84C);color:#ffffff;border:none;padding:12px 30px;font-family:'Cinzel',serif;font-size:13px;letter-spacing:1px;border-radius:4px;cursor:pointer;margin-top:10px;box-shadow:0 4px 15px rgba(140,110,50,0.25)}
-    .rsvp-success{display:none;font-family:'Great Vibes',cursive;font-size:28px;color:#8B6914;padding:20px 0}
-    .rsvp-success span{display:block;font-family:'Cormorant Garamond',serif;font-size:15px;color:#7A5C2A;margin-top:5px}
-    .audioControl{position:fixed;bottom:25px;right:25px;z-index:100;width:40px;height:40px;background:rgba(13,21,32,0.8);border:1px solid rgba(200,160,70,0.3);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);backdrop-filter:blur(4px)}
-    .audioControl svg{width:18px;height:18px;fill:#C9A84C;opacity:0.8}
-    .inv-footer{text-align:center;padding:30px;background:#0D1520;font-family:'Cinzel Decorative',serif;font-size:10px;color:#C9A84C;opacity:0.5;letter-spacing:2px}
-    </style>
+.hero-names{font-family:'Great Vibes',cursive;color:#5C3D0E;display:flex;flex-direction:column;align-items:center;gap:5px;margin-bottom:25px}
+.hero-name{font-size:60px;display:block;line-height:1.1}
+.hero-amp{font-size:32px;display:block;color:#C9A84C;margin:4px 0}
+
+.one-liner{
+  font-family:'Cormorant Garamond',serif;font-size:15px;color:#7A5C2A;
+  font-style:italic;line-height:1.6;padding:0 10px;
+}
+.one-liner em{display:block;font-size:14px;color:#8B6914;margin-top:5px;font-weight:600;font-style:normal}
+
+.scroll-hint{
+  margin-top:30px;font-family:'Cinzel',serif;font-size:11px;
+  letter-spacing:3px;text-transform:uppercase;color:#8B6914;opacity:.7;
+  animation:bob 2s infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ── SWANS ── */
+.swans-wrap{width:100%;display:flex;justify-content:center;margin-top:10px;padding-bottom:30px}
+
+/* ── BODY SECTIONS ── */
+.inv-body{background:linear-gradient(180deg,#fdf8f0 0%,#f5edd6 100%);padding-bottom:60px}
+.inv-section{
+  padding:45px 25px;text-align:center;
+  opacity:0;transform:translateY(30px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+}
+.inv-section.visible{opacity:1;transform:translateY(0)}
+
+.gold-div{display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:25px}
+.gold-div span{width:60px;height:1px;background:linear-gradient(to right,transparent,rgba(180,130,40,0.4),transparent)}
+.gold-div i{font-style:normal;color:#C9A84C;font-size:12px}
+
+.sec-title{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#8B6914;margin-bottom:15px}
+.quote-text{font-family:'Great Vibes',cursive;font-size:30px;color:#5C3D0E;margin-bottom:10px}
+.quote-sub{font-size:16px;color:#7A5C2A;line-height:1.7}
+
+.floral-section{
+  background:rgba(201,168,76,0.05);
+  border-top:1px solid rgba(201,168,76,0.2);
+  border-bottom:1px solid rgba(201,168,76,0.2);
+}
+.detail-row{margin-bottom:20px}
+.d-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:#8B6914;margin-bottom:4px}
+.d-value{font-size:19px;color:#3D2A06;line-height:1.4}
+.d-value em{display:block;font-size:15px;color:#8B6914;font-style:italic}
+
+/* ── COUNTDOWN ── */
+.countdown-outer{
+  background:linear-gradient(135deg,#0D1520,#162030);
+  border-top:1px solid rgba(201,168,76,0.2);
+  border-bottom:1px solid rgba(201,168,76,0.2);
+}
+.cd-heading{font-family:'Great Vibes',cursive;font-size:28px;color:#C9A84C;margin-bottom:20px}
+.cd-boxes{display:flex;justify-content:center;gap:12px;align-items:center}
+.cd-box{display:flex;flex-direction:column;align-items:center}
+.cd-num{
+  font-family:'Cinzel Decorative',serif;font-size:28px;color:#F0D98A;
+  background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);
+  border-radius:4px;padding:12px 8px;min-width:65px;box-shadow:0 4px 15px rgba(0,0,0,0.3);
+}
+.cd-colon{font-family:'Cinzel',serif;font-size:24px;color:#C9A84C;opacity:0.6;padding-bottom:25px}
+.cd-unit{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;color:#8B6914;margin-top:8px}
+
+/* ── VENUE ── */
+.venue-name{font-family:'Great Vibes',cursive;font-size:30px;color:#5C3D0E;margin-bottom:4px}
+.venue-address{font-size:14px;color:#7A5C2A;font-style:italic;margin-bottom:20px}
+.map-card{
+  border-radius:6px;overflow:hidden;border:1px solid rgba(201,168,76,0.3);
+  box-shadow:0 8px 25px rgba(0,0,0,0.1);max-width:340px;margin:0 auto 15px;
+}
+.map-card iframe{width:100%;height:200px;border:none;display:block}
+.map-open-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 24px;background:linear-gradient(135deg,#8B6914,#C9A84C,#8B6914);
+  border:none;border-radius:4px;font-family:'Cinzel',serif;font-size:10px;
+  letter-spacing:3px;color:#0D1520;text-decoration:none;box-shadow:0 4px 15px rgba(201,168,76,0.25);
+}
+.map-open-btn svg{width:14px;height:14px;fill:#0D1520}
+
+/* ── DRESS CODE ── */
+.dresscode-section{background:rgba(201,168,76,0.04);border-top:1px solid rgba(201,168,76,0.15)}
+.dc-title{font-family:'Great Vibes',cursive;font-size:28px;color:#5C3D0E;margin-bottom:10px}
+.dc-badge{
+  display:inline-block;padding:6px 18px;border:1px solid rgba(201,168,76,0.35);
+  font-family:'Cinzel Decorative',serif;font-size:12px;color:#5C3D0E;letter-spacing:1px;margin-bottom:8px;
+}
+.dc-sub{font-size:13px;color:#8B6914;font-style:italic}
+
+/* ── RSVP ── */
+.rsvp-section{background:linear-gradient(180deg,#f5edd6,#ede0c4);border-top:1px solid rgba(201,168,76,0.2)}
+.rsvp-heading{font-family:'Great Vibes',cursive;font-size:32px;color:#5C3D0E;margin-bottom:4px}
+.rsvp-sub{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;color:#8B6914;margin-bottom:20px}
+.rsvp-field{margin-bottom:15px;text-align:left;max-width:320px;margin-left:auto;margin-right:auto}
+.rsvp-field label{display:block;font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;color:#8B6914;margin-bottom:6px}
+.rsvp-field input,.rsvp-field select{
+  width:100%;padding:11px;border:1px solid rgba(201,168,76,0.3);background:rgba(255,255,255,0.5);
+  font-size:16px;color:#3D2A06;border-radius:4px;outline:none;
+}
+.rsvp-field input:focus,.rsvp-field select:focus{background:rgba(255,255,255,0.85);border-color:#C9A84C}
+.rsvp-btn{
+  background:linear-gradient(135deg,#6B4E0A,#C9A84C,#6B4E0A);color:#FFF8E7;border:none;padding:13px;
+  width:100%;max-width:320px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;
+  text-transform:uppercase;cursor:pointer;border-radius:4px;margin-top:10px;
+  box-shadow:0 5px 15px rgba(201,168,76,0.25);display:block;margin-left:auto;margin-right:auto;
+}
+.rsvp-success{display:none;font-family:'Great Vibes',cursive;font-size:24px;color:#5C3D0E;padding:20px 0}
+.rsvp-success span{display:block;font-size:28px;color:#C9A84C;margin-bottom:5px}
+
+/* ── AUDIO BUTTON ── */
+#audioControl{
+  position:fixed;bottom:25px;right:25px;z-index:100;
+  width:40px;height:40px;background:rgba(13,21,32,0.85);border:1px solid rgba(201,168,76,0.3);
+  border-radius:50%;cursor:pointer;display:none;align-items:center;justify-content:center;
+  box-shadow:0 4px 15px rgba(0,0,0,0.3);backdrop-filter:blur(3px);
+}
+#audioControl svg{width:16px;height:16px;fill:#F0D98A}
+
+/* ── FOOTER ── */
+.inv-footer{
+  text-align:center;padding:25px;background:#0D1520;
+  font-family:'Cinzel Decorative',serif;font-size:10px;color:#C9A84C;
+  opacity:0.5;letter-spacing:2px;
+}
+</style>
 </head>
 <body>
 
 <div id="bg-ambient"></div>
 <div id="stars"></div>
+<div id="petals"></div>
 
-<!-- STAGE 1: THE ENVELOPE -->
+<audio id="inviteMusic" loop preload="auto">
+  <source src="https://raw.githubusercontent.com/yko272000-rgb/Wedding-Inv/main/SaveDouyin.App_7634117781272677650.mp3" type="audio/mpeg">
+</audio>
+
+<button id="audioControl" onclick="toggleAudio()">
+  <svg id="musicOnIcon" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+  <svg id="musicOffIcon" viewBox="0 0 24 24" style="display:none"><path d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73l6 6L21 20.73 4.27 3zM14 7h4V3h-6v5.18l2 2z"/></svg>
+</button>
+
+<!-- ═══ STAGE 1: ENVELOPE ═══ -->
 <div id="envelopeStage">
-    <div class="env-container">
-        <svg viewBox="0 0 390 820" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#EDE0C4"/><stop offset="50%" stop-color="#E0CFA8"/><stop offset="100%" stop-color="#D0C19B"/>
-                </linearGradient>
-                <linearGradient id="flapG" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#F2E6CA"/><stop offset="100%" stop-color="#DDD0A8"/>
-                </linearGradient>
-                <radialGradient id="waxG" cx="38%" cy="32%" r="65%">
-                    <stop offset="0%" stop-color="#990026"/><stop offset="60%" stop-color="#6b001a"/><stop offset="100%" stop-color="#400010"/>
-                </radialGradient>
-                <filter id="envShadow" dx="0" dy="12" stdDeviation="15" flood-color="rgba(160,130,70,0.12)"/>
-            </defs>
-            <rect width="390" height="820" rx="6" fill="url(#bodyG)" filter="url(#envShadow)"/>
-            <polygon points="0,820 0,200 195,510" fill="rgba(160,130,70,0.12)"/>
-            <polygon points="390,820 390,200 195,510" fill="rgba(140,110,55,0.1)"/>
-            <polygon points="0,820 390,820 195,510" fill="rgba(120,95,40,0.13)"/>
-            <rect x="12" y="12" width="366" height="796" rx="3" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1.2"/>
-            <text x="195" y="380" font-family="'Cinzel', serif" font-size="20" font-weight="900" fill="#4A320F" text-anchor="middle" letter-spacing="5">YOUSSEF & MARAM</text>
-            <g id="flapGroup" style="transform-origin: 195px 200px; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);">
-                <polygon points="0,200 390,200 195,510" fill="url(#flapG)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
-            </g>
-            <g id="waxSeal" onclick="openEnvelope()" style="cursor: pointer; transform-origin: 195px 510px; transition: transform 0.5s ease, opacity 0.5s ease;">
-                <path d="M 195,462 C 225,464 248,482 248,510 C 249,545 220,562 195,559 C 165,561 142,542 142,510 C 142,480 170,461 195,462 Z" fill="url(#waxG)" opacity="0.95" />
-                <text x="195" y="520" font-family="'Cinzel Decorative', serif" font-size="26" font-weight="bold" fill="#38000c" text-anchor="middle">Y&M</text>
-            </g>
-        </svg>
-        <div class="tap-label" id="tapLabel">✦   Tap to Open   ✦</div>
-    </div>
+  <div class="env-container" onclick="openEnvelope()">
+    <svg viewBox="0 0 390 820" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#EDE0C4"/>
+          <stop offset="50%" stop-color="#F5EDD6"/>
+          <stop offset="100%" stop-color="#E0CFA8"/>
+        </linearGradient>
+        <linearGradient id="flapG" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#F2E6CA"/>
+          <stop offset="100%" stop-color="#DDD0A8"/>
+        </linearGradient>
+        <radialGradient id="waxG" cx="38%" cy="32%" r="65%">
+          <stop offset="0%" stop-color="#990026"/>
+          <stop offset="60%" stop-color="#6b001a"/>
+          <stop offset="100%" stop-color="#400010"/>
+        </radialGradient>
+        <filter id="envShadow"><feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="rgba(0,0,0,0.5)"/></filter>
+        <filter id="waxBevel" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+          <feSpecularLighting in="blur" surfaceScale="5" specularConstant="1" specularExponent="15" lighting-color="#ffffff" result="light">
+            <fePointLight x="150" y="250" z="40"/>
+          </feSpecularLighting>
+          <feComposite in="light" in2="SourceAlpha" operator="in" result="lightEffect"/>
+          <feComposite in="SourceGraphic" in2="lightEffect" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+        </filter>
+      </defs>
+
+      <rect width="390" height="820" rx="6" fill="url(#bodyG)" filter="url(#envShadow)"/>
+      <polygon points="0,820 0,200 195,510" fill="rgba(160,130,70,0.12)"/>
+      <polygon points="390,820 390,200 195,510" fill="rgba(140,110,55,0.1)"/>
+      <polygon points="0,820 390,820 195,510" fill="rgba(120,95,40,0.13)"/>
+      <rect x="12" y="12" width="366" height="796" rx="3" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1.2"/>
+
+      <text x="195" y="380" font-family="'Cinzel', serif" font-size="20" font-weight="900" fill="#4A320F" text-anchor="middle" letter-spacing="5">YOUSSEF &amp; MARAM</text>
+
+      <g id="flapGroup" style="transform-origin:195px 310px; transition:transform 1.2s cubic-bezier(0.4,0,0.2,1)">
+        <polygon points="0,0 390,0 195,310" fill="url(#flapG)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+        <polygon points="12,12 378,12 195,295" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="0.7"/>
+      </g>
+
+      <g id="waxSeal" style="cursor:pointer; transform-origin:195px 300px; transition:transform 0.5s ease, opacity 0.5s ease">
+        <path d="M 195,252 C 225,254 248,272 248,300 C 249,335 220,352 195,349 C 165,351 142,332 143,300 C 142,270 170,251 195,252 Z" fill="#6b001a" filter="url(#waxBevel)" opacity="0.95"/>
+        <circle cx="195" cy="300" r="42" fill="#540014" stroke="#40000f" stroke-width="1"/>
+        <circle cx="195" cy="300" r="34" fill="none" stroke="#2d000a" stroke-width="1.5" opacity="0.4"/>
+        <text x="195" y="310" font-family="'Cinzel Decorative', serif" font-size="26" font-weight="bold" fill="#c9943a" text-anchor="middle" letter-spacing="-1">Y&amp;M</text>
+      </g>
+    </svg>
+    <div class="tap-label" id="tapLabel">✦ &nbsp; Tap to Open &nbsp; ✦</div>
+  </div>
 </div>
 
-<!-- STAGE 2: THE CELEBRATION -->
+<!-- ═══ STAGE 2: INVITATION ═══ -->
 <div id="invitationPage">
-    <div class="hero">
-        <svg class="arch-svg" viewBox="0 0 390 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin meet">
-            <path d="M60,900 L60,220 Q60,80 195,80 Q330,80 330,220 L330,900" fill="none" stroke="rgba(180,140,60,0.4)" stroke-width="1.5"/>
-        </svg>
-        
-        <div class="arch-frame">
-            <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
-            <div class="wedding-day-label">Wedding Day</div>
-            <div class="wedding-date-small">30 . 12 . 2027</div>
-            
-            <div class="hero-names">
-                <span class="hero-name">Youssef</span>
-                <span class="hero-amp">&amp;</span>
-                <span class="hero-name">Maram</span>
-            </div>
-            
-            <div class="one-liner">
-                "Together, we are stepping into a lifetime of love, laughter, and endless blessings under Allah's grace."
-            </div>
-        </div>
+  <div class="hero">
+    <svg class="arch-svg" viewBox="0 0 390 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin meet">
+      <path d="M60,900 L60,220 Q60,80 195,80 Q330,80 330,220 L330,900" fill="none" stroke="rgba(180,140,60,0.25)" stroke-width="1.5"/>
+    </svg>
+
+    <div class="arch-frame">
+      <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+      <div class="wedding-day-label">Wedding Day</div>
+      <div class="wedding-date-small">30 · 12 · 2027</div>
+
+      <div class="hero-names">
+        <span class="hero-name">Youssef</span>
+        <span class="hero-amp">&amp;</span>
+        <span class="hero-name">Maram</span>
+      </div>
+
+      <div class="one-liner">
+        "Together, we are stepping into a lifetime of love, laughter, and endless blessings under Allah's grace."
+        <em>Two souls, one destiny</em>
+      </div>
+
+      <div class="scroll-hint">Scroll Down<br>∨</div>
     </div>
 
     <div class="swans-wrap">
-        <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" class="disney-swans">
-            <ellipse cx="170" cy="135" rx="90" ry="8" fill="rgba(255,255,255,0.4)" filter="blur(4px)" />
-            <ellipse cx="170" cy="135" rx="60" ry="4" fill="rgba(212,175,55,0.15)" filter="blur(2px)" />
-            <g class="swan-couple">
-                <g class="left-swan">
-                    <path d="M 100,130 C 80,130 65,115 65,95 C 65,85 75,75 90,80 C 105,85 115,105 125,115 C 130,120 120,130 100,130 Z" fill="#ffffff" />
-                    <path d="M 115,115 C 125,105 135,90 130,70 C 125,50 140,35 150,35 C 153,35 155,38 153,42 C 148,55 138,75 125,115 Z" fill="#ffffff" />
-                    <path d="M 85,90 C 75,90 70,100 75,110 C 80,120 95,122 105,115 C 100,105 95,90 85,90 Z" fill="#fcfcfc" opacity="0.9" stroke="rgba(212,175,55,0.2)" stroke-width="0.5" />
-                    <polygon points="153,40 162,43 151,46" fill="#D4AF37" />
-                    <circle cx="147" cy="40" r="1.2" fill="#222" />
-                </g>
-                <g class="right-swan">
-                    <path d="M 240,130 C 260,130 275,115 275,95 C 275,85 265,75 250,80 C 235,85 225,105 215,115 C 210,120 220,130 240,130 Z" fill="#ffffff" />
-                    <path d="M 225,115 C 215,105 205,90 210,70 C 215,50 200,35 190,35 C 187,35 185,38 187,42 C 192,55 202,75 215,115 Z" fill="#ffffff" />
-                    <path d="M 255,90 C 265,90 270,100 265,110 C 260,120 245,122 235,115 C 240,105 245,90 255,90 Z" fill="#fcfcfc" opacity="0.9" stroke="rgba(212,175,55,0.2)" stroke-width="0.5" />
-                    <polygon points="187,40 178,43 189,46" fill="#D4AF37" />
-                    <circle cx="193" cy="40" r="1.2" fill="#222" />
-                </g>
-            </g>
-        </svg>
+      <svg viewBox="0 0 340 140" xmlns="http://www.w3.org/2000/svg" width="240">
+        <ellipse cx="170" cy="125" rx="140" ry="10" fill="rgba(180,140,60,0.06)"/>
+        <path d="M105,115 Q95,95 105,75 Q115,55 128,65 Q120,75 115,95" fill="none" stroke="#8B6914" stroke-width="1.2"/>
+        <path d="M235,115 Q245,95 235,75 Q225,55 212,65 Q220,75 225,95" fill="none" stroke="#8B6914" stroke-width="1.2"/>
+        <path d="M120,65 Q170,35 220,65" fill="none" stroke="rgba(180,140,60,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="inv-body">
+    <div class="inv-section" id="sec-welcome">
+      <div class="gold-div"><span></span><i>✦</i><span></span></div>
+      <p class="quote-text">"Two Souls, One Destiny"</p>
+      <p class="quote-sub">Dear friends and family, please join us for an evening of love, laughter, heartfelt duas, and unforgettable memories as we begin our forever.</p>
     </div>
 
-    <div class="inv-body">
-        <div class="inv-section" id="sec-welcome">
-            <div class="gold-div"><span></span><i class="fas fa-heart"></i><span></span></div>
-            <p class="quote-text">Two souls, one destiny</p>
-            <p class="quote-author">"And among His signs is this, that He created for you mates from among yourselves, that you may dwell in tranquility with them, and He has put love and mercy between your hearts."<br>— Surah Ar-Rum [30:21]</p>
-            <div class="floral-section">
-                <div class="detail-row">
-                    <p class="d-label">The Cordial Invitation</p>
-                    <p class="d-value">Together with their families, Youssef &amp; Maram joyfully invite you to share in the celebration of their love as they exchange vows and begin their beautiful journey together.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="inv-section countdown-outer" id="sec-countdown">
-            <div class="gold-div"><span></span><i class="fas fa-hourglass-start"></i><span></span></div>
-            <p class="cd-heading">Counting down to the big day</p>
-            <div class="cd-lines">
-                <div class="cd-box"><div class="cd-num" id="cd-d">00</div><div class="cd-word">Days</div></div>
-                <div class="cd-box"><div class="cd-num" id="cd-h">00</div><div class="cd-word">Hours</div></div>
-                <div class="cd-box"><div class="cd-num" id="cd-m">00</div><div class="cd-word">Mins</div></div>
-                <div class="cd-box"><div class="cd-num" id="cd-s">00</div><div class="cd-word">Secs</div></div>
-            </div>
-        </div>
-
-        <div class="inv-section" id="sec-details">
-            <div class="gold-div"><span></span><i class="fas fa-calendar-alt"></i><span></span></div>
-            <h2 class="sec-title">When &amp; Where</h2>
-            <div class="detail-row">
-                <p class="d-label">Date &amp; Time</p>
-                <p class="d-value">Thursday, December 30, 2027</p>
-                <p class="d-value mid">Ceremony begins at 6:00 PM</p>
-            </div>
-            <div class="detail-row" style="margin-top: 30px;">
-                <p class="d-label">The Venue</p>
-                <p class="venue-name">The Grand Ballroom</p>
-                <p class="venue-address">The Waldorf Astoria, Kuwait City</p>
-            </div>
-            <div class="map-wrapper">
-                <div class="map-card">
-                    <iframe src="https://maps.google.com/maps?q=Waldorf%20Astoria%20Kuwait&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-            <a href="https://maps.app.goo.gl/WaldorfAstoriaKuwait" target="_blank" class="map-btn"><i class="fas fa-map-marker-alt"></i> View on Google Maps</a>
-        </div>
-
-        <div class="inv-section dresscode-section" id="sec-dresscode">
-            <div class="gold-div"><span></span><i class="fas fa-tshirt"></i><span></span></div>
-            <h2 class="sec-title">Dress Code</h2>
-            <p class="dc-title">Black Tie Attire</p>
-            <p class="dc-desc">We request our guests to join us in elegant evening wear.</p>
-            <span class="dc-badge">Gents: Tuxedos or Dark Suits</span><br>
-            <span class="dc-badge" style="margin-top:10px">Ladies: Formal Evening Gowns</span>
-        </div>
-
-        <div class="inv-section rsvp-section" id="sec-rsvp">
-            <div class="gold-div"><span></span><i class="fas fa-envelope-open-text"></i><span></span></div>
-            <h2 class="sec-title">R.S.V.P</h2>
-            <p class="rsvp-subtitle">Please honor us with your response by November 30, 2027 so we may finalize arrangements for your presence.</p>
-            <form id="rsvpForm" onsubmit="handleRSVP(event)">
-                <div class="rsvp-field">
-                    <label>Full Name</label>
-                    <input type="text" id="rsvp-name" required placeholder="Enter your name">
-                </div>
-                <div class="rsvp-field">
-                    <label>Attendance</label>
-                    <select id="rsvp-status" required>
-                        <option value="" disabled selected>Will you attend?</option>
-                        <option value="yes">Joyfully Accept</option>
-                        <option value="no">Regretfully Decline</option>
-                    </select>
-                </div>
-                <div class="rsvp-field">
-                    <label>Number of Guests</label>
-                    <select id="rsvp-guests">
-                        <option value="1">1 Guest</option>
-                        <option value="2">2 Guests</option>
-                    </select>
-                </div>
-                <button type="submit" class="rsvp-btn">Submit Response</button>
-            </form>
-            <div class="rsvp-success" id="rsvp-success-msg">
-                Thank You!
-                <span>Your response has been saved. We look forward to celebrating with you!</span>
-            </div>
-        </div>
+    <div class="inv-section floral-section" id="sec-schedule">
+      <div class="sec-title">The Celebration</div>
+      <div class="detail-row">
+        <p class="d-label">Date</p>
+        <p class="d-value">Thursday, the 30th of December<br><em>2027</em></p>
+      </div>
+      <div class="detail-row">
+        <p class="d-label">Time</p>
+        <p class="d-value">Seven o'clock in the Evening</p>
+      </div>
     </div>
 
-    <div class="inv-footer">
-        YOUSSEF &amp; MARAM — 30.12.2027 — #YOUSSEFANDMARAM
+    <div class="countdown-outer inv-section" id="sec-countdown">
+      <p class="cd-heading">The Celebration Begins In</p>
+      <div class="cd-boxes">
+        <div class="cd-box"><div class="cd-num" id="days">00</div><div class="cd-unit">Days</div></div>
+        <div class="cd-colon">:</div>
+        <div class="cd-box"><div class="cd-num" id="hours">00</div><div class="cd-unit">Hours</div></div>
+        <div class="cd-colon">:</div>
+        <div class="cd-box"><div class="cd-num" id="mins">00</div><div class="cd-unit">Minutes</div></div>
+        <div class="cd-colon">:</div>
+        <div class="cd-box"><div class="cd-num" id="secs">00</div><div class="cd-unit">Seconds</div></div>
+      </div>
     </div>
+
+    <div class="inv-section" id="sec-venue">
+      <div class="gold-div"><span></span><i>✦</i><span></span></div>
+      <div class="sec-title">Venue</div>
+      <p class="venue-name">On the Nile, Zamalek</p>
+      <p class="venue-address">Corniche El Nil, Zamalek, Cairo, Egypt</p>
+      <div class="map-card">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.2!2d31.2194!3d30.0626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14584082c6282a99%3A0x9248e9d3d8c0fb4!2sZamalek%2C+Cairo%2C+Egypt!5e0!3m2!1sen!2seg!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <a class="map-open-btn" href="https://www.google.com/maps/search/Nile+Zamalek+Cairo+Egypt/@30.0626,31.2194,15z" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+        ✦ Open in Google Maps ✦
+      </a>
+    </div>
+
+    <div class="dresscode-section inv-section" id="sec-dress">
+      <div class="dc-title">Dress Code</div>
+      <div class="dc-badge">Black Tie Formal</div>
+      <p class="dc-sub">Gentlemen: Black Tuxedo &nbsp;·&nbsp; Ladies: Floor-Length Gown</p>
+    </div>
+
+    <div class="rsvp-section inv-section" id="sec-rsvp">
+      <div class="gold-div"><span></span><i>✦</i><span></span></div>
+      <p class="rsvp-heading">Kindly Respond</p>
+      <p class="rsvp-sub">Please reply before December 1st, 2027</p>
+      <div id="rsvpForm">
+        <div class="rsvp-field">
+          <label>Full Name</label>
+          <input type="text" id="gName" placeholder="Your full name">
+        </div>
+        <div class="rsvp-field">
+          <label>Number of Guests</label>
+          <select id="gCount">
+            <option value="">Select</option>
+            <option>1 Guest</option><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option>
+          </select>
+        </div>
+        <div class="rsvp-field">
+          <label>Attendance</label>
+          <select id="gAtt">
+            <option value="">Select</option>
+            <option value="yes">Joyfully Accepts</option>
+            <option value="no">Regretfully Declines</option>
+          </select>
+        </div>
+        <button class="rsvp-btn" onclick="sendRSVP()">Confirm Attendance</button>
+      </div>
+      <div class="rsvp-success" id="rsvpSuccess">
+        <span>✦</span>
+        Thank you! Your response has been joyfully received.
+      </div>
+    </div>
+  </div>
+
+  <div class="inv-footer">YOUSSEF &amp; MARAM — 2027</div>
 </div>
 
-<button class="audioControl" id="audioBtn" onclick="toggleAudio()">
-    <svg id="music-on" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-</button>
-
-<audio id="bgMusic" loop src="SaveDouyin.App_7634117781272677650.mp3"></audio>
-
 <script>
+window.addEventListener('DOMContentLoaded', () => {
+  initStars();
+  setupScrollReveal();
+  updateCountdown();
+});
+
+function initStars() {
+  const container = document.getElementById('stars');
+  if (!container) return;
+  for (let i = 0; i < 40; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = (1 + Math.random() * 2) + 'px';
+    s.style.width = s.style.height = size;
+    s.style.top = Math.random() * 100 + '%';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.setProperty('--d', (2 + Math.random() * 4) + 's');
+    s.style.setProperty('--dl', Math.random() * 3 + 's');
+    container.appendChild(s);
+  }
+}
+
+function setupScrollReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.inv-section').forEach(s => observer.observe(s));
+}
+
+function createPetal() {
+  const container = document.getElementById('petals');
+  if (!container || container.children.length > 25) return;
+  const p = document.createElement('div');
+  p.className = 'petal';
+  const w = 10 + Math.random() * 10;
+  const colors = [
+    'rgba(210,160,170,0.6)',
+    'rgba(230,180,185,0.5)',
+    'rgba(245,200,200,0.55)',
+    'rgba(201,168,76,0.25)',
+    'rgba(220,175,180,0.5)'
+  ];
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  p.style.cssText = [
+    `--pw:${w}px`,
+    `--ph:${w * 1.3}px`,
+    `--pd:${6 + Math.random() * 5}s`,
+    `--pdelay:${Math.random() * 0.5}s`,
+    `--drift:${(Math.random() - 0.5) * 120}px`,
+    `--r0:${Math.random() * 360}deg`,
+    `--r1:${Math.random() * 720}deg`,
+    `left:${Math.random() * 100}%`,
+    `background:${color}`,
+    `border-radius:${50 + Math.random() * 20}% ${Math.random() * 20}% ${50 + Math.random() * 20}% ${Math.random() * 20}%`
+  ].join(';');
+  container.appendChild(p);
+  setTimeout(() => p.remove(), 11000);
+}
+
+const music = document.getElementById('inviteMusic');
+if (music) music.volume = 0.25;
+
 function openEnvelope() {
-    document.getElementById('flapGroup').style.transform = 'rotateX(180deg)';
-    document.getElementById('waxSeal').style.transform = 'translateY(-100px)';
-    document.getElementById('waxSeal').style.opacity = '0';
-    document.getElementById('tapLabel').style.opacity = '0';
-    
-    setTimeout(() => {
-        document.getElementById('envelopeStage').style.transform = 'translateY(-100vh)';
-        document.getElementById('envelopeStage').style.opacity = '0';
-        document.getElementById('invitationPage').style.display = 'block';
-        
-        setTimeout(() => {
-            document.getElementById('envelopeStage').style.display = 'none';
-            initInvitation();
-        }, 1000);
-    }, 1200);
-}
+  const tapLabel = document.getElementById('tapLabel');
+  const waxSeal  = document.getElementById('waxSeal');
+  const flapGroup = document.getElementById('flapGroup');
+  const stage     = document.getElementById('envelopeStage');
 
-function initInvitation() {
-    startCountdown();
-    playMusicDirectly();
-    
-    const sections = document.querySelectorAll('.inv-section');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    sections.forEach(sec => observer.observe(sec));
-}
+  if (tapLabel) tapLabel.style.opacity = '0';
+  if (waxSeal) { waxSeal.style.transform = 'scale(0.8)'; waxSeal.style.opacity = '0'; }
 
-function startCountdown() {
-    const target = new Date('December 30, 2027 18:00:00').getTime();
-    setInterval(() => {
-        const now = new Date().getTime();
-        const diff = target - now;
-        if (diff <= 0) return;
-        
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
-        
-        document.getElementById('cd-d').innerText = d < 10 ? '0' + d : d;
-        document.getElementById('cd-h').innerText = h < 10 ? '0' + h : h;
-        document.getElementById('cd-m').innerText = m < 10 ? '0' + m : m;
-        document.getElementById('cd-s').innerText = s < 10 ? '0' + s : s;
-    }, 1000);
-}
+  setTimeout(() => {
+    if (flapGroup) flapGroup.style.transform = 'rotateX(-170deg)';
+  }, 300);
 
-const audio = document.getElementById('bgMusic');
-function playMusicDirectly() {
-    audio.play().catch(() => {
-        console.log("Autoplay blocked, waiting for interaction");
-    });
+  if (music) music.play().catch(() => {});
+
+  setTimeout(() => {
+    if (stage) { stage.style.transition = 'opacity 0.8s, transform 0.8s'; stage.style.opacity = '0'; stage.style.transform = 'scale(0.95)'; }
+  }, 1200);
+
+  setTimeout(() => {
+    if (stage) stage.style.display = 'none';
+    document.getElementById('invitationPage').style.display = 'block';
+    document.getElementById('audioControl').style.display = 'flex';
+    setInterval(updateCountdown, 1000);
+    setInterval(createPetal, 400);
+    setupScrollReveal();
+  }, 2000);
 }
 
 function toggleAudio() {
-    if (audio.paused) {
-        audio.play();
-        document.getElementById('audioBtn').style.background = 'rgba(13,21,32,0.8)';
-    } else {
-        audio.pause();
-        document.getElementById('audioBtn').style.background = 'rgba(200,60,60,0.2)';
-    }
+  if (!music) return;
+  if (music.paused) {
+    music.play();
+    document.getElementById('musicOnIcon').style.display = 'block';
+    document.getElementById('musicOffIcon').style.display = 'none';
+  } else {
+    music.pause();
+    document.getElementById('musicOnIcon').style.display = 'none';
+    document.getElementById('musicOffIcon').style.display = 'block';
+  }
 }
 
-function handleRSVP(e) {
-    e.preventDefault();
-    document.getElementById('rsvpForm').style.display = 'none';
-    document.getElementById('rsvp-success-msg').style.display = 'block';
+function updateCountdown() {
+  const diff = new Date('2027-12-30T19:00:00') - new Date();
+  if (diff <= 0) {
+    ['days','hours','mins','secs'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = '00'; });
+    return;
+  }
+  const d = document.getElementById('days');
+  const h = document.getElementById('hours');
+  const m = document.getElementById('mins');
+  const s = document.getElementById('secs');
+  if (d) d.textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
+  if (h) h.textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+  if (m) m.textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+  if (s) s.textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+}
+
+function sendRSVP() {
+  const name = document.getElementById('gName').value.trim();
+  const count = document.getElementById('gCount').value;
+  const att   = document.getElementById('gAtt').value;
+  if (!name || !count || !att) { alert('Please fill in all fields.'); return; }
+  document.getElementById('rsvpForm').style.display = 'none';
+  document.getElementById('rsvpSuccess').style.display = 'block';
 }
 </script>
-
 </body>
 </html>
