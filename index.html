@@ -9,7 +9,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{height:100%;scroll-behavior:smooth}
 body{
-  background:#0D1520;
+  background:#090D14;
   font-family:'Cormorant Garamond',serif;
   min-height:100vh;
   overflow-x:hidden;
@@ -22,7 +22,7 @@ body{
   background:
     radial-gradient(ellipse 60% 40% at 20% 30%, rgba(180,140,60,0.07) 0%, transparent 70%),
     radial-gradient(ellipse 50% 50% at 80% 70%, rgba(180,140,60,0.05) 0%, transparent 70%),
-    linear-gradient(180deg, #0D1520 0%, #111825 100%);
+    linear-gradient(180deg, #090D14 0%, #111825 100%);
 }
 #stars{position:fixed;inset:0;z-index:0;pointer-events:none}
 .star{
@@ -32,31 +32,32 @@ body{
 }
 @keyframes twinkle{0%,100%{opacity:.05}50%{opacity:.6}}
 
-/* ── PETALS ── */
+/* ── REALISTIC WHITE WEDDING PETALS ── */
 #petals{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
 .petal{
   position:absolute;top:-80px;left:var(--pl,50%);
   width:var(--pw,16px);height:var(--ph,20px);opacity:0;
+  box-shadow: inset -2px -2px 4px rgba(0,0,0,0.05);
   animation:petalFall var(--pd,7s) ease-in var(--pdelay,0s) forwards;
 }
 @keyframes petalFall{
   0%  {transform:translateX(0) rotate(var(--r0,0deg)) scale(1);opacity:0;top:-80px}
-  10% {opacity:.8}
-  90% {opacity:.4}
-  100%{transform:translateX(var(--drift,40px)) rotate(var(--r1,360deg)) scale(0.75);opacity:0;top:110vh}
+  10% {opacity:.9}
+  90% {opacity:.5}
+  100%{transform:translateX(var(--drift,40px)) rotate(var(--r1,360deg)) scale(0.7);opacity:0;top:110vh}
 }
 
-/* ── ENVELOPE STAGE ── */
+/* ── ROYAL ENVELOPE STAGE ── */
 #envelopeStage{
   position:relative;z-index:10;
   width:100%;min-height:100vh;
   display:flex;align-items:center;justify-content:center;
-  padding:20px;background:#0d1520;
+  padding:20px;background:#090D14;
 }
 .env-container{width:100%;max-width:390px;position:relative;cursor:pointer}
 .env-container svg{
   width:100%;height:auto;
-  filter:drop-shadow(0 20px 50px rgba(0,0,0,0.65)) drop-shadow(0 0 20px rgba(180,140,60,0.1));
+  filter:drop-shadow(0 25px 55px rgba(0,0,0,0.8)) drop-shadow(0 0 30px rgba(180,140,60,0.15));
 }
 .tap-label{
   position:absolute;bottom:8%;left:50%;transform:translateX(-50%);
@@ -106,8 +107,15 @@ body{
 }
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 
-/* ── SWANS ── */
-.swans-wrap{width:100%;display:flex;justify-content:center;margin-top:10px;padding-bottom:30px}
+/* ── ROMANTIC ANIMATED SWANS ── */
+.swans-wrap{
+  width:100%;display:flex;justify-content:center;margin-top:10px;padding-bottom:30px;
+  animation:swanFloating 4s ease-in-out infinite;
+}
+@keyframes swanFloating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
 
 /* ── BODY SECTIONS ── */
 .inv-body{background:linear-gradient(180deg,#fdf8f0 0%,#f5edd6 100%);padding-bottom:60px}
@@ -209,7 +217,7 @@ body{
 
 /* ── FOOTER ── */
 .inv-footer{
-  text-align:center;padding:25px;background:#0D1520;
+  text-align:center;padding:25px;background:#090D14;
   font-family:'Cinzel Decorative',serif;font-size:10px;color:#C9A84C;
   opacity:0.5;letter-spacing:2px;
 }
@@ -230,54 +238,61 @@ body{
   <svg id="musicOffIcon" viewBox="0 0 24 24" style="display:none"><path d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73l6 6L21 20.73 4.27 3zM14 7h4V3h-6v5.18l2 2z"/></svg>
 </button>
 
-<!-- ═══ STAGE 1: ENVELOPE ═══ -->
+<!-- ═══ STAGE 1: ROYAL ENVELOPE ═══ -->
 <div id="envelopeStage">
   <div class="env-container" onclick="openEnvelope()">
     <svg viewBox="0 0 390 820" xmlns="http://www.w3.org/2000/svg">
       <defs>
+        <!-- Vintage Paper Texture Gradients -->
         <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#EDE0C4"/>
-          <stop offset="50%" stop-color="#F5EDD6"/>
-          <stop offset="100%" stop-color="#E0CFA8"/>
+          <stop offset="0%" stop-color="#EADFCA"/>
+          <stop offset="50%" stop-color="#E2D4BC"/>
+          <stop offset="100%" stop-color="#D4C4AA"/>
         </linearGradient>
         <linearGradient id="flapG" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#F2E6CA"/>
-          <stop offset="100%" stop-color="#DDD0A8"/>
+          <stop offset="0%" stop-color="#ECDDC3"/>
+          <stop offset="100%" stop-color="#C8B89E"/>
         </linearGradient>
-        <radialGradient id="waxG" cx="38%" cy="32%" r="65%">
-          <stop offset="0%" stop-color="#990026"/>
-          <stop offset="60%" stop-color="#6b001a"/>
-          <stop offset="100%" stop-color="#400010"/>
-        </radialGradient>
-        <filter id="envShadow"><feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="rgba(0,0,0,0.5)"/></filter>
-        <filter id="waxBevel" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
-          <feSpecularLighting in="blur" surfaceScale="5" specularConstant="1" specularExponent="15" lighting-color="#ffffff" result="light">
-            <fePointLight x="150" y="250" z="40"/>
+        <!-- Realistic Wax Seal Bevel Shading Filters -->
+        <filter id="waxBevel" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="2.5" result="blur"/>
+          <feSpecularLighting in="blur" surfaceScale="6" specularConstant="1.2" specularExponent="12" lighting-color="#ffffff" result="light">
+            <fePointLight x="130" y="240" z="50"/>
           </feSpecularLighting>
           <feComposite in="light" in2="SourceAlpha" operator="in" result="lightEffect"/>
-          <feComposite in="SourceGraphic" in2="lightEffect" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+          <feComposite in="SourceGraphic" in2="lightEffect" operator="arithmetic" k1="0" k2="1" k3="0.8" k4="0"/>
         </filter>
+        <filter id="waxShadow">
+          <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.6"/>
+        </filter>
+        <filter id="envShadow"><feDropShadow dx="0" dy="15" stdDeviation="18" flood-color="rgba(0,0,0,0.65)"/></filter>
       </defs>
 
+      <!-- Envelope Body -->
       <rect width="390" height="820" rx="6" fill="url(#bodyG)" filter="url(#envShadow)"/>
-      <polygon points="0,820 0,200 195,510" fill="rgba(160,130,70,0.12)"/>
-      <polygon points="390,820 390,200 195,510" fill="rgba(140,110,55,0.1)"/>
-      <polygon points="0,820 390,820 195,510" fill="rgba(120,95,40,0.13)"/>
-      <rect x="12" y="12" width="366" height="796" rx="3" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1.2"/>
+      <polygon points="0,820 0,200 195,510" fill="rgba(130,105,60,0.18)"/>
+      <polygon points="390,820 390,200 195,510" fill="rgba(120,95,50,0.15)"/>
+      <polygon points="0,820 390,820 195,510" fill="rgba(100,80,40,0.2)"/>
+      <rect x="12" y="12" width="366" height="796" rx="3" fill="none" stroke="rgba(160,130,70,0.4)" stroke-width="1.5"/>
 
-      <text x="195" y="380" font-family="'Cinzel', serif" font-size="20" font-weight="900" fill="#4A320F" text-anchor="middle" letter-spacing="5">YOUSSEF &amp; MARAM</text>
+      <!-- Title Placement -->
+      <text x="195" y="380" font-family="'Cinzel', serif" font-size="20" font-weight="900" fill="#3D2A12" text-anchor="middle" letter-spacing="5">YOUSSEF &amp; MARAM</text>
 
-      <g id="flapGroup" style="transform-origin:195px 310px; transition:transform 1.2s cubic-bezier(0.4,0,0.2,1)">
-        <polygon points="0,0 390,0 195,310" fill="url(#flapG)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
-        <polygon points="12,12 378,12 195,295" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="0.7"/>
+      <!-- Opening Flap Group -->
+      <g id="flapGroup" style="transform-origin:195px 310px; transition:transform 1s cubic-bezier(0.4, 0, 0.2, 1)">
+        <polygon points="0,0 390,0 195,310" fill="url(#flapG)" stroke="rgba(150,120,60,0.25)" stroke-width="0.5"/>
+        <polygon points="12,12 378,12 195,295" fill="none" stroke="rgba(160,130,70,0.3)" stroke-width="0.8"/>
       </g>
 
-      <g id="waxSeal" style="cursor:pointer; transform-origin:195px 300px; transition:transform 0.5s ease, opacity 0.5s ease">
-        <path d="M 195,252 C 225,254 248,272 248,300 C 249,335 220,352 195,349 C 165,351 142,332 143,300 C 142,270 170,251 195,252 Z" fill="#6b001a" filter="url(#waxBevel)" opacity="0.95"/>
-        <circle cx="195" cy="300" r="42" fill="#540014" stroke="#40000f" stroke-width="1"/>
-        <circle cx="195" cy="300" r="34" fill="none" stroke="#2d000a" stroke-width="1.5" opacity="0.4"/>
-        <text x="195" y="310" font-family="'Cinzel Decorative', serif" font-size="26" font-weight="bold" fill="#c9943a" text-anchor="middle" letter-spacing="-1">Y&amp;M</text>
+      <!-- Realistic Royal Wax Seal Stamp -->
+      <g id="waxSeal" filter="url(#waxShadow)" style="cursor:pointer; transform-origin:195px 300px; transition:transform 0.4s ease, opacity 0.4s ease">
+        <!-- Outer Organic Fluid Stamp Shape -->
+        <path d="M 195,248 C 218,249 235,254 246,268 C 258,284 256,312 245,328 C 232,346 208,354 191,351 C 170,353 148,342 141,324 C 134,302 140,274 155,261 C 168,250 182,248 195,248 Z" fill="#75071F" filter="url(#waxBevel)"/>
+        <!-- Inner Ring -->
+        <circle cx="195" cy="300" r="39" fill="#630216" opacity="0.9"/>
+        <circle cx="195" cy="300" r="34" fill="none" stroke="#42000B" stroke-width="1.5" opacity="0.6"/>
+        <!-- Initials -->
+        <text x="194" y="309" font-family="'Cinzel Decorative', serif" font-size="24" font-weight="bold" fill="#DFB262" text-anchor="middle" letter-spacing="-1" filter="drop-shadow(0px 1px 1px rgba(0,0,0,0.5))">Y&amp;M</text>
       </g>
     </svg>
     <div class="tap-label" id="tapLabel">✦ &nbsp; Tap to Open &nbsp; ✦</div>
@@ -310,12 +325,22 @@ body{
       <div class="scroll-hint">Scroll Down<br>∨</div>
     </div>
 
+    <!-- Romantic White Elegant Swans Facing Each Other -->
     <div class="swans-wrap">
       <svg viewBox="0 0 340 140" xmlns="http://www.w3.org/2000/svg" width="240">
         <ellipse cx="170" cy="125" rx="140" ry="10" fill="rgba(180,140,60,0.06)"/>
-        <path d="M105,115 Q95,95 105,75 Q115,55 128,65 Q120,75 115,95" fill="none" stroke="#8B6914" stroke-width="1.2"/>
-        <path d="M235,115 Q245,95 235,75 Q225,55 212,65 Q220,75 225,95" fill="none" stroke="#8B6914" stroke-width="1.2"/>
-        <path d="M120,65 Q170,35 220,65" fill="none" stroke="rgba(180,140,60,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
+        <!-- Left Swan (Male/Youssef Accent) -->
+        <path d="M 125,120 C 105,120 90,105 95,85 C 100,65 118,50 128,25 C 132,15 138,15 137,23 C 135,35 120,55 120,75 C 120,95 135,105 150,110 C 140,116 132,120 125,120 Z" fill="#FFFFFF" stroke="#D4AF37" stroke-width="0.5"/>
+        <path d="M 137,23 L 142,21 L 138,27 Z" fill="#FF8C00"/> <!-- Beak -->
+        <circle cx="134" cy="22" r="1" fill="#000000"/> <!-- Eye -->
+
+        <!-- Right Swan (Female/Maram Accent) -->
+        <path d="M 215,120 C 235,120 250,105 245,85 C 240,65 222,50 212,25 C 208,15 202,15 203,23 C 205,35 220,55 220,75 C 220,95 205,105 190,110 C 200,116 208,120 215,120 Z" fill="#FFFFFF" stroke="#D4AF37" stroke-width="0.5"/>
+        <path d="M 203,23 L 198,21 L 202,27 Z" fill="#FF8C00"/> <!-- Beak -->
+        <circle cx="206" cy="22" r="1" fill="#000000"/> <!-- Eye -->
+        
+        <!-- Connecting Magic Spark Arc -->
+        <path d="M135,35 Q170,15 205,35" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1.2" stroke-dasharray="4 4"/>
       </svg>
     </div>
   </div>
@@ -440,32 +465,26 @@ function setupScrollReveal() {
 
 function createPetal() {
   const container = document.getElementById('petals');
-  if (!container || container.children.length > 25) return;
+  if (!container || container.children.length > 30) return;
   const p = document.createElement('div');
   p.className = 'petal';
-  const w = 10 + Math.random() * 10;
-  const colors = [
-    'rgba(210,160,170,0.6)',
-    'rgba(230,180,185,0.5)',
-    'rgba(245,200,200,0.55)',
-    'rgba(201,168,76,0.25)',
-    'rgba(220,175,180,0.5)'
-  ];
-  const color = colors[Math.floor(Math.random() * colors.length)];
+  const w = 12 + Math.random() * 10;
+  
+  // Real Natural Wedding Flowers: White Petals with a delicate light green core dot base
   p.style.cssText = [
     `--pw:${w}px`,
-    `--ph:${w * 1.3}px`,
-    `--pd:${6 + Math.random() * 5}s`,
-    `--pdelay:${Math.random() * 0.5}s`,
-    `--drift:${(Math.random() - 0.5) * 120}px`,
+    `--ph:${w * 1.2}px`,
+    `--pd:${5 + Math.random() * 4}s`,
+    `--pdelay:${Math.random() * 0.3}s`,
+    `--drift:${(Math.random() - 0.5) * 140}px`,
     `--r0:${Math.random() * 360}deg`,
-    `--r1:${Math.random() * 720}deg`,
+    `--r1:${Math.random() * 540}deg`,
     `left:${Math.random() * 100}%`,
-    `background:${color}`,
-    `border-radius:${50 + Math.random() * 20}% ${Math.random() * 20}% ${50 + Math.random() * 20}% ${Math.random() * 20}%`
+    `background: radial-gradient(circle at 50% 85%, #6B8E23 0%, #7FFF00 8%, #FFFFFF 22%, #F9F9F9 100%)`,
+    `border-radius: 55% 45% 52% 48% / 60% 40% 60% 40%`
   ].join(';');
   container.appendChild(p);
-  setTimeout(() => p.remove(), 11000);
+  setTimeout(() => p.remove(), 9000);
 }
 
 const music = document.getElementById('inviteMusic');
@@ -477,27 +496,37 @@ function openEnvelope() {
   const flapGroup = document.getElementById('flapGroup');
   const stage     = document.getElementById('envelopeStage');
 
+  // Instant execution upon tap for enhanced real physical action feel
+  if (music) {
+    music.play().catch((err) => { console.log("Audio play deferred or blocked:", err); });
+  }
+
   if (tapLabel) tapLabel.style.opacity = '0';
-  if (waxSeal) { waxSeal.style.transform = 'scale(0.8)'; waxSeal.style.opacity = '0'; }
+  if (waxSeal) { 
+    waxSeal.style.transform = 'scale(0.75) translateY(10px)'; 
+    waxSeal.style.opacity = '0'; 
+  }
 
   setTimeout(() => {
     if (flapGroup) flapGroup.style.transform = 'rotateX(-170deg)';
-  }, 300);
-
-  if (music) music.play().catch(() => {});
+  }, 150);
 
   setTimeout(() => {
-    if (stage) { stage.style.transition = 'opacity 0.8s, transform 0.8s'; stage.style.opacity = '0'; stage.style.transform = 'scale(0.95)'; }
-  }, 1200);
+    if (stage) { 
+      stage.style.transition = 'opacity 0.7s, transform 0.7s'; 
+      stage.style.opacity = '0'; 
+      stage.style.transform = 'scale(0.96)'; 
+    }
+  }, 1000);
 
   setTimeout(() => {
     if (stage) stage.style.display = 'none';
     document.getElementById('invitationPage').style.display = 'block';
     document.getElementById('audioControl').style.display = 'flex';
     setInterval(updateCountdown, 1000);
-    setInterval(createPetal, 400);
+    setInterval(createPetal, 350);
     setupScrollReveal();
-  }, 2000);
+  }, 1600);
 }
 
 function toggleAudio() {
