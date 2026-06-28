@@ -230,7 +230,7 @@ body{
 <div id="stars"></div>
 <div id="petals"></div>
 
-<!-- 🎼 AUDIO STREAM (Violin Cover) -->
+<!-- 🎼 AUDIO STREAM -->
 <audio id="inviteMusic" loop preload="auto">
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
 </audio>
@@ -241,7 +241,7 @@ body{
 </button>
 
 <!-- ═══════════════════════════
-     STAGE 1: LUXURY ENVELOPE
+     STAGE 1: LUXURY ENVELOPE (UPDATED CONTRAST)
 ═══════════════════════════ -->
 <div id="envelopeStage">
   <div class="env-container" onclick="openEnvelope()">
@@ -260,8 +260,8 @@ body{
       <polygon points="0,820 390,820 195,510" fill="rgba(120,95,40,0.13)"/>
       <rect x="12" y="12" width="366" height="796" rx="3" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1.2"/>
 
-      <!-- تم تعديل اللون هنا ليصبح واضحاً وبدرجة ذهبية فاخرة وبدون شفافية عالية -->
-      <text x="195" y="365" font-family="'Cinzel Decorative',serif" font-size="14" font-weight="700" fill="#8B6914" text-anchor="middle" letter-spacing="4">YOUSSEF &amp; MARAM</text>
+      <!-- تم تعديل الخط هنا ليكون غامق وواضح ومقروء بوضوح تام فوق الظرف -->
+      <text x="195" y="380" font-family="'Cinzel', serif" font-size="20" font-weight="900" fill="#4A320F" text-anchor="middle" letter-spacing="5" style="text-shadow: 1px 1px 2px rgba(255,255,255,0.8);">YOUSSEF &amp; MARAM</text>
 
       <g id="flapGroup" style="transform-origin: 195px 0px; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);">
         <polygon points="0,0 390,0 195,310" fill="url(#flapG)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
@@ -317,14 +317,12 @@ body{
   </div>
 
   <div class="inv-body">
-    <!-- Welcome Note -->
     <div class="inv-section" id="sec-welcome">
       <div class="gold-div"><span></span><i>✦</i><span></span></div>
       <p class="quote-text">"Two Souls, One Destiny"</p>
       <p class="quote-sub">Dear friends and family, please join us for an evening of love, laughter, heartfelt duas, and unforgettable memories as we begin our forever.</p>
     </div>
 
-    <!-- Schedule -->
     <div class="inv-section floral-section" id="sec-schedule">
       <div class="sec-title">The Celebration</div>
       <div class="detail-row">
@@ -337,7 +335,6 @@ body{
       </div>
     </div>
 
-    <!-- Countdown -->
     <div class="countdown-outer inv-section" id="sec-countdown">
       <p class="cd-heading">The Celebration Begins In</p>
       <div class="cd-boxes">
@@ -351,7 +348,6 @@ body{
       </div>
     </div>
 
-    <!-- Venue & Map -->
     <div class="inv-section" id="sec-venue">
       <div class="gold-div"><span></span><i>✦</i><span></span></div>
       <div class="sec-title">Venue</div>
@@ -368,14 +364,12 @@ body{
       </a>
     </div>
 
-    <!-- Dress Code -->
     <div class="dresscode-section inv-section" id="sec-dress">
       <div class="dc-title">Dress Code</div>
       <div class="dc-badge">Black Tie Formal</div>
       <p class="dc-sub">Gentlemen: Black Tuxedo &nbsp;·&nbsp; Ladies: Floor-Length Gown</p>
     </div>
 
-    <!-- RSVP -->
     <div class="rsvp-section inv-section" id="sec-rsvp">
       <div class="gold-div"><span></span><i>✦</i><span></span></div>
       <p class="rsvp-heading">Kindly Respond</p>
@@ -405,7 +399,7 @@ body{
       </div>
       <div class="rsvp-success" id="rsvpSuccess">
         <span>✦</span>
-        Thank you! Your response has been joyfully received. We look forward to celebrating with you.
+        Thank you! Your response has been joyfully received.
       </div>
     </div>
   </div>
@@ -415,6 +409,7 @@ body{
 <script>
 window.addEventListener('DOMContentLoaded', () => {
   initStars();
+  setupScrollReveal();
 });
 
 function initStars(){
@@ -454,7 +449,7 @@ function openEnvelope(){
   setTimeout(()=>{ document.getElementById('flapGroup').style.transform='rotateX(-170deg)'; }, 300);
   
   if(music) {
-    music.play().catch(e => console.log("Audio waiting interaction context."));
+    music.play().catch(e => console.log("Audio play deferred."));
   }
 
   setTimeout(()=>{
@@ -470,9 +465,9 @@ function openEnvelope(){
     document.getElementById('envelopeStage').style.display='none';
     document.getElementById('invitationPage').style.display='block';
     document.getElementById('audioControl').style.display='flex';
-    initScrollReveal();
     setInterval(updateCountdown, 1000);
     setInterval(createPetal, 450);
+    window.dispatchEvent(new Event('scroll'));
   }, 2000);
 }
 
@@ -500,4 +495,4 @@ function updateCountdown(){
   
   if(d) d.textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
   if(h) h.textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-  if(m) m.textContent = String(Math.floorNormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+  if(m) m.textContent = String(Math.floor((diff%3600000)/600Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
