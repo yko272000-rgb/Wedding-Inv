@@ -19,6 +19,18 @@ body{
 /* ────────────────────────────
    BACKGROUND AMBIENT & STARS
 ──────────────────────────── */
+  .hero-content {
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    padding: 0 45px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+}
   .envelope-flap.open {
     transform: rotateX(180deg);
 }
@@ -299,8 +311,8 @@ body{
       <path d="M60,900 L60,220 Q60,80 195,80 Q330,80 330,220 L330,900" fill="none" stroke="rgba(180,140,60,0.25)" stroke-width="1.5"/>
     </svg>
 
-    <div class="arch-frame">
-      <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+<div class="arch-frame hero-content">
+    <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
       <div class="wedding-day-label">Wedding Day</div>
       <div class="wedding-date-small">30 · 12 · 2027</div>
 
