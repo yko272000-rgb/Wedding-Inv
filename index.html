@@ -232,9 +232,8 @@ body{
 
 <!-- 🎼 AUDIO STREAM -->
 <audio id="inviteMusic" loop preload="auto">
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
-
 <button id="audioControl" onclick="toggleAudio()">
   <svg id="musicOnIcon" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
   <svg id="musicOffIcon" viewBox="0 0 24 24" style="display:none;"><path d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73l6 6L21 20.73 4.27 3zM14 7h4V3h-6v5.18l2 2z"/></svg>
@@ -464,12 +463,11 @@ function openEnvelope(){
     document.getElementById('envelopeStage').style.display='none';
     document.getElementById('invitationPage').style.display='block';
     document.getElementById('audioControl').style.display='flex';
-    setInterval(updateCountdown, 1000);
+setInterval(updateCountdown, 1000);
     setInterval(createPetal, 450);
-    window.dispatchEvent(new Event('scroll'));
+    document.querySelectorAll('.inv-section').forEach(s => s.classList.add('visible'));
   }, 2000);
 }
-
 function toggleAudio(){
   if(!music) return;
   if(music.paused){ 
