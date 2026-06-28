@@ -41,7 +41,6 @@ body{
   width: var(--pw, 18px);
   height: var(--ph, 22px);
   opacity: 0;
-  /* Multi-layered gradient mirroring image_41ffbd.png: rich green stem sepals base transitioning into fresh wedding white */
   background: radial-gradient(circle at 50% 90%, #4D6A1D 0%, #769C37 12%, #EAEFE2 30%, #FFFFFF 75%, #FDFDFD 100%);
   filter: drop-shadow(1px 3px 4px rgba(0,0,0,0.15));
   border-radius: 40% 40% 55% 55% / 50% 50% 50% 50%;
@@ -83,36 +82,64 @@ body{
   background:linear-gradient(180deg,#fdf6ec 0%,#f7ecd8 50%,#f0e2c8 100%);
   position:relative;display:flex;flex-direction:column;align-items:center;
   overflow:hidden;
-  padding-bottom: 80px;
+  padding: 40px 0;
 }
-.arch-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.arch-svg{
+  position:absolute;
+  top: 25px;
+  bottom: 25px;
+  left: 25px;
+  right: 25px;
+  width: calc(100% - 50px);
+  height: calc(100% - 50px);
+  pointer-events:none;
+}
 
 .arch-frame{
   position:relative;
-  width:100%;max-width:390px;
-  padding:140px 45px 20px;
+  width:100%;max-width:340px;
+  padding:100px 20px 40px;
   display:flex;flex-direction:column;align-items:center;
   text-align:center;
+  justify-content: space-between;
+  min-height: calc(100vh - 100px);
+}
+
+.arch-top-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .bismillah{font-family:'Amiri',serif;font-size:22px;color:#5C3D0E;margin-bottom:15px}
 .wedding-day-label{font-family:'Great Vibes',cursive;font-size:26px;color:#8B6914;margin-bottom:6px}
-.wedding-date-small{font-family:'Cinzel',serif;font-size:11px;letter-spacing:4px;color:#A07828;margin-bottom:25px}
+.wedding-date-small{font-family:'Cinzel',serif;font-size:11px;letter-spacing:4px;color:#A07828;margin-bottom:35px}
 
-.hero-names{font-family:'Great Vibes',cursive;color:#5C3D0E;display:flex;flex-direction:column;align-items:center;gap:5px;margin-bottom:25px}
+.hero-names{font-family:'Great Vibes',cursive;color:#5C3D0E;display:flex;flex-direction:column;align-items:center;gap:5px;margin-bottom:35px}
 .hero-name{font-size:60px;display:block;line-height:1.1}
 .hero-amp{font-size:32px;display:block;color:#C9A84C;margin:4px 0}
 
-.one-liner{
-  font-family:'Cormorant Garamond',serif;font-size:15px;color:#7A5C2A;
-  font-style:italic;line-height:1.6;padding:0 10px;
+.arch-bottom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
 }
-.one-liner em{display:block;font-size:14px;color:#8B6914;margin-top:5px;font-weight:600;font-style:normal}
+
+.one-liner{
+  font-family:'Cormorant Garamond',serif;font-size:14.5px;color:#7A5C2A;
+  font-style:italic;line-height:1.55;padding:0 5px;
+  margin-bottom: 20px;
+}
+.one-liner em{display:block;font-size:14px;color:#8B6914;margin-top:8px;font-weight:600;font-style:normal;letter-spacing:1px}
 
 .scroll-hint{
-  margin-top:40px;font-family:'Cinzel',serif;font-size:11px;
+  font-family:'Cinzel',serif;font-size:11px;
   letter-spacing:3px;text-transform:uppercase;color:#8B6914;opacity:.7;
   animation:bob 2s infinite;
+  margin-top: 10px;
 }
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 
@@ -178,7 +205,7 @@ body{
 
 /* ── DRESS CODE ── */
 .dresscode-section{background:rgba(201,168,76,0.04);border-top:1px solid rgba(201,168,76,0.15)}
-.dc-title{font-family:'Great Vibes',cursive;font-size:28px;color:#5C3D0E;margin-bottom:10px}
+.dc-title{font-family:'Great Vibes',cursive;font-size:28px;color:#5C3E0E;margin-bottom:10px}
 .dc-badge{
   display:inline-block;padding:6px 18px;border:1px solid rgba(201,168,76,0.35);
   font-family:'Cinzel Decorative',serif;font-size:12px;color:#5C3D0E;letter-spacing:1px;margin-bottom:8px;
@@ -242,7 +269,6 @@ body{
   <div class="env-container" onclick="openEnvelope()">
     <svg viewBox="0 0 390 820" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <!-- Vintage Paper Texture Gradients -->
         <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stop-color="#EADFCA"/>
           <stop offset="50%" stop-color="#E2D4BC"/>
@@ -253,28 +279,31 @@ body{
           <stop offset="100%" stop-color="#C8B89E"/>
         </linearGradient>
         
-        <!-- High-End 3D Specular Shading Filters precisely matching image_41ff23.png -->
-        <filter id="ultraWaxSpecular" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur in="SourceAlpha" stdDeviation="1.8" result="blur"/>
-          <feSpecularLighting in="blur" surfaceScale="7" specularConstant="1.8" specularExponent="22" lighting-color="#ffffff" result="specOut">
-            <fePointLight x="120" y="220" z="65"/>
+        <!-- Highly Advanced Matte Wax Shader with Deep Specular Nodes for Antique Feel -->
+        <filter id="antiqueWaxFilter" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="2.2" result="blur"/>
+          <feSpecularLighting in="blur" surfaceScale="6.5" specularConstant="1.2" specularExponent="14" lighting-color="#ffebef" result="specOut">
+            <fePointLight x="130" y="240" z="50"/>
           </feSpecularLighting>
           <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specIn"/>
-          <feComposite in="SourceGraphic" in2="specIn" operator="arithmetic" k1="0" k2="1" k3="0.75" k4="0"/>
+          <feComposite in="SourceGraphic" in2="specIn" operator="arithmetic" k1="0" k2="1" k3="0.55" k4="0" result="lit"/>
+          <!-- Subtle Dark Ambient Occlusion for Aged Look -->
+          <feContentive>
+            <feColorMatrix type="matrix" values="0.7 0 0 0 0  0 0.1 0 0 0  0 0 0.1 0 0  0 0 0 0.9 0"/>
+          </feContentive>
         </filter>
-        <filter id="waxInnerShadow">
-          <feComponentTransfer in="SourceAlpha">
-            <feFuncA type="linear" slope="0.7"/>
-          </feComponentTransfer>
-          <feGaussianBlur stdDeviation="2" result="blur"/>
-          <feOffset dx="1" dy="2"/>
+
+        <filter id="deepWaxCarving">
+          <feGaussianBlur stdDeviation="1.2" result="blur"/>
+          <feOffset dx="-0.8" dy="-1.5" result="offset"/>
           <feComposite operator="out" in2="SourceGraphic" result="inverse"/>
-          <feFlood flood-color="black" result="color"/>
+          <feFlood flood-color="#240106" flood-opacity="0.95" result="color"/>
           <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
           <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
         </filter>
-        <filter id="waxOuterShadow">
-          <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#000000" flood-opacity="0.65"/>
+
+        <filter id="waxBaseShadow">
+          <feDropShadow dx="1" dy="6" stdDeviation="5" flood-color="#000000" flood-opacity="0.75"/>
         </filter>
         <filter id="envShadow"><feDropShadow dx="0" dy="15" stdDeviation="18" flood-color="rgba(0,0,0,0.65)"/></filter>
       </defs>
@@ -286,29 +315,41 @@ body{
       <polygon points="0,820 390,820 195,510" fill="rgba(100,80,40,0.2)"/>
       <rect x="12" y="12" width="366" height="796" rx="3" fill="none" stroke="rgba(160,130,70,0.4)" stroke-width="1.5"/>
 
-      <!-- Title Placement -->
       <text x="195" y="380" font-family="'Cinzel', serif" font-size="20" font-weight="900" fill="#3D2A12" text-anchor="middle" letter-spacing="5">YOUSSEF &amp; MARAM</text>
 
-      <!-- Opening Flap Group -->
+      <!-- Opening Flap -->
       <g id="flapGroup" style="transform-origin:195px 310px; transition:transform 1s cubic-bezier(0.4, 0, 0.2, 1)">
         <polygon points="0,0 390,0 195,310" fill="url(#flapG)" stroke="rgba(150,120,60,0.25)" stroke-width="0.5"/>
         <polygon points="12,12 378,12 195,295" fill="none" stroke="rgba(160,130,70,0.3)" stroke-width="0.8"/>
       </g>
 
-      <!-- 100% Hyper-Realistic Matte Glossy Wax Seal (image_41ff23.png Inspired) -->
-      <g id="waxSeal" filter="url(#waxOuterShadow)" style="cursor:pointer; transform-origin:195px 300px; transition:transform 0.4s ease, opacity 0.4s ease">
-        <!-- Outer Melted Base Ring -->
-        <path d="M 195,244 C 215,245 228,249 243,260 C 259,273 264,295 258,315 C 252,336 232,352 211,355 C 190,358 168,349 154,335 C 140,320 134,298 141,278 C 147,259 171,243 195,244 Z" fill="#911424" filter="url(#ultraWaxSpecular)"/>
-        <!-- Pressed Central Platform -->
-        <circle cx="195" cy="300" r="42" fill="#800F1E" filter="url(#ultraWaxSpecular)"/>
-        <!-- Deep Pressed Groove Ring -->
-        <circle cx="195" cy="300" r="36" fill="none" stroke="#52040D" stroke-width="2.5" opacity="0.85" filter="url(#waxInnerShadow)"/>
-        <!-- Embellished Royal Wreath Details -->
-        <path d="M 172,315 C 168,300 170,285 178,275 M 218,315 C 222,300 220,285 212,275" fill="none" stroke="#A81D30" stroke-width="1.2" filter="url(#ultraWaxSpecular)"/>
-        <!-- Deeply Embedded Initials -->
-        <text x="195" y="309" font-family="'Cinzel Decorative', serif" font-size="24" font-weight="bold" fill="#50030B" text-anchor="middle" letter-spacing="-1" filter="url(#waxInnerShadow)" opacity="0.95">Y&amp;M</text>
-        <!-- Overlay Specular Blend Highlight for Inner Text -->
-        <text x="195" y="309" font-family="'Cinzel Decorative', serif" font-size="24" font-weight="bold" fill="#B5283B" text-anchor="middle" letter-spacing="-1" opacity="0.4" pointer-events="none">Y&amp;M</text>
+      <!-- ═══ RE-ENGINEERED TRADITIONAL BURGUNDY WAX SEAL ═══ -->
+      <g id="waxSeal" filter="url(#waxBaseShadow)" style="cursor:pointer; transform-origin:195px 300px; transition:transform 0.4s ease, opacity 0.4s ease">
+        <!-- Imperfect, Hand-Poured Melted Base Splat in Deep Crimson/Burgundy -->
+        <path d="M 194,238 
+                 C 214,237 222,243 239,249 
+                 C 255,255 264,271 267,289 
+                 C 270,307 259,328 251,339 
+                 C 241,352 220,361 202,363 
+                 C 183,365 166,357 151,346 
+                 C 137,334 126,311 129,291 
+                 C 132,271 149,251 166,243 
+                 C 178,237 184,238 194,238 Z" 
+              fill="#5A0A15" filter="url(#antiqueWaxFilter)"/>
+              
+        <!-- Secondary Overflow Outer Ring -->
+        <path d="M 195,248 C 219,246 241,257 252,278 C 262,298 257,324 242,341 C 226,356 199,359 179,349 C 159,339 146,315 151,293 C 155,271 172,249 195,248 Z" fill="#4D040E" opacity="0.85" filter="url(#antiqueWaxFilter)"/>
+        
+        <!-- Flat Pressed Center Matrix -->
+        <circle cx="195" cy="300" r="41" fill="#42020B" filter="url(#antiqueWaxFilter)"/>
+        
+        <!-- Deep Intaglio Intricate Borders -->
+        <circle cx="195" cy="300" r="35" fill="none" stroke="#210004" stroke-width="2.5" filter="url(#deepWaxCarving)"/>
+        <circle cx="195" cy="300" r="32" fill="none" stroke="#6E0F1D" stroke-width="0.8" opacity="0.7"/>
+        
+        <!-- Hand-Engraved Intaglio Typography -->
+        <text x="195" y="309" font-family="'Cinzel Decorative', serif" font-size="23" font-weight="bold" fill="#1C0003" text-anchor="middle" letter-spacing="-1" filter="url(#deepWaxCarving)">Y&amp;M</text>
+        <text x="195" y="309" font-family="'Cinzel Decorative', serif" font-size="23" font-weight="bold" fill="#871A27" text-anchor="middle" letter-spacing="-1" opacity="0.35" pointer-events="none">Y&amp;M</text>
       </g>
     </svg>
     <div class="tap-label" id="tapLabel">✦ &nbsp; Tap to Open &nbsp; ✦</div>
@@ -318,27 +359,33 @@ body{
 <!-- ═══ STAGE 2: INVITATION ═══ -->
 <div id="invitationPage">
   <div class="hero">
-    <svg class="arch-svg" viewBox="0 0 390 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin meet">
-      <path d="M60,900 L60,220 Q60,80 195,80 Q330,80 330,220 L330,900" fill="none" stroke="rgba(180,140,60,0.25)" stroke-width="1.5"/>
+    <!-- Fluid Arch SVG framing everything perfectly inside -->
+    <svg class="arch-svg" viewBox="0 0 340 820" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M25,820 L25,180 Q25,25 170,25 Q315,25 315,180 L315,820" fill="none" stroke="rgba(180,140,60,0.3)" stroke-width="1.5"/>
     </svg>
 
     <div class="arch-frame">
-      <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
-      <div class="wedding-day-label">Wedding Day</div>
-      <div class="wedding-date-small">30 · 12 · 2027</div>
+      <div class="arch-top-content">
+        <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+        <div class="wedding-day-label">Wedding Day</div>
+        <div class="wedding-date-small">30 · 12 · 2027</div>
 
-      <div class="hero-names">
-        <span class="hero-name">Youssef</span>
-        <span class="hero-amp">&amp;</span>
-        <span class="hero-name">Maram</span>
+        <div class="hero-names">
+          <span class="hero-name">Youssef</span>
+          <span class="hero-amp">&amp;</span>
+          <span class="hero-name">Maram</span>
+        </div>
       </div>
 
-      <div class="one-liner">
-        "Together, we are stepping into a lifetime of love, laughter, and endless blessings under Allah's grace."
-        <em>Two souls, one destiny</em>
-      </div>
+      <!-- Completely enclosed within the arch border boundaries -->
+      <div class="arch-bottom-content">
+        <div class="one-liner">
+          "Together, we are stepping into a lifetime of love, laughter, and endless blessings under Allah's grace."
+          <em>Two souls, one destiny</em>
+        </div>
 
-      <div class="scroll-hint">Scroll Down<br>∨</div>
+        <div class="scroll-hint">Scroll Down<br>∨</div>
+      </div>
     </div>
   </div>
 
@@ -476,7 +523,6 @@ function createPetal() {
     `--r0:${Math.random() * 360}deg`,
     `--r1:${Math.random() * 540}deg`,
     `left:${Math.random() * 100}%`,
-    /* Precise gradient replication from image_41ffbd.png showing hyper-realistic botanical details */
     `background: radial-gradient(circle at 50% 88%, #476618 0%, #688B2A 14%, #E9EEE1 32%, #FFFFFF 80%, #FAFAFA 100%)`,
     `border-radius: 45% 55% 50% 50% / 55% 55% 45% 45%`
   ].join(';');
@@ -493,14 +539,13 @@ function openEnvelope() {
   const flapGroup = document.getElementById('flapGroup');
   const stage     = document.getElementById('envelopeStage');
 
-  // Music triggers instantly upon tap to ensure flawless alignment
   if (music) {
-    music.play().catch((err) => { console.log("Audio contextual trigger:", err); });
+    music.play().catch((err) => { console.log("Audio trigger info:", err); });
   }
 
   if (tapLabel) tapLabel.style.opacity = '0';
   if (waxSeal) { 
-    waxSeal.style.transform = 'scale(0.85) translateY(12px)'; 
+    waxSeal.style.transform = 'scale(0.82) translateY(20px)'; 
     waxSeal.style.opacity = '0'; 
   }
 
