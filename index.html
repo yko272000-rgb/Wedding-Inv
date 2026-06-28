@@ -267,8 +267,24 @@ body{
         <polygon points="0,0 390,0 195,310" fill="url(#flapG)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
         <polygon points="12,12 378,12 195,295" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="0.7"/>
       </g>
-      <image href="seal.png" x="150" y="260" width="90" height="90" class="envelope-seal" onclick="openEnvelope()" style="transform-origin: 195px 305px; cursor: pointer;" />
-      <image href="seal.png" x="150" y="265" width="90" height="90" class="envelope-seal" onclick="openEnvelope()" style="transform-origin: 195px 310px;" />
+<g id="waxSeal" class="envelope-seal" onclick="openEnvelope()" style="cursor: pointer; transform-origin: 195px 300px; transition: transform 0.5s ease, opacity 0.5s ease;">
+        <defs>
+          <filter id="waxBevel" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="5" specularConstant="1" specularExponent="15" lighting-color="#ffffff" result="light">
+              <fePointLight x="150" y="250" z="40"/>
+            </feSpecularLighting>
+            <feComposite in="light" in2="SourceAlpha" operator="in" result="lightEffect"/>
+            <feComposite in="SourceGraphic" in2="lightEffect" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+          </filter>
+        </defs>
+
+        <path d="M 195,252 C 225,254 248,272 248,300 C 249,335 220,352 195,349 C 165,351 142,332 143,300 C 142,270 170,251 195,252 Z" fill="#6b001a" filter="url(#waxBevel)" opacity="0.95" />
+        
+        <circle cx="195" cy="300" r="42" fill="#540014" stroke="#40000f" stroke-width="1" />
+        <circle cx="195" cy="300" r="34" fill="none" stroke="#2d000a" stroke-width="1.5" opacity="0.4" />
+        <text x="195" y="310" font-family="'Cinzel Decorative', 'Playfair Display', serif" font-size="26" font-weight="bold" fill="#38000c" text-anchor="middle" style="letter-spacing: -1px; text-shadow: 0.5px 0.5px 0.5px rgba(255,255,255,0.1);">Y&amp;M</text>
+      </g>
     </svg>
     <div class="tap-label" id="tapLabel">✦ &nbsp; Tap to Open &nbsp; ✦</div>
   </div>
