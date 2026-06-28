@@ -19,6 +19,64 @@ body{
 /* ────────────────────────────
    BACKGROUND AMBIENT & STARS
 ──────────────────────────── */
+/* إجبار حاوية القبة والنصوص على البقاء بالداخل */
+.arch-frame {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 390px !important;
+    margin: 0 auto !important;
+    padding: 140px 45px 40px 45px !important; /* مسافة أمان من فوق ويمين وشمال */
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+/* تظبيط البسملة */
+.bismillah {
+    font-size: 22px !important;
+    margin-bottom: 15px !important;
+    width: 100% !important;
+}
+
+/* تظبيط كلمة Wedding Day والتاريخ */
+.wedding-day-label {
+    font-size: 26px !important;
+    margin-bottom: 5px !important;
+}
+.wedding-date-small {
+    font-size: 16px !important;
+    margin-bottom: 30px !important;
+}
+
+/* تظبيط الأسماء وحجمها جوه القبة */
+.hero-names {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 5px !important;
+    width: 100% !important;
+    margin-bottom: 35px !important;
+}
+.hero-name {
+    font-size: 48px !important; /* تصغير حركي بسيط ليناسب الحواف */
+    line-height: 1.1 !important;
+    display: block !important;
+}
+.hero-amp {
+    font-size: 28px !important;
+    margin: 5px 0 !important;
+}
+
+/* تظبيط الكلام المكتوب تحت الأسماء */
+.one-liner {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    padding: 0 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
   .hero-content {
     position: absolute;
     top: 15%;
